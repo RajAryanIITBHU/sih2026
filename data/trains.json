@@ -1,0 +1,122 @@
+[
+  {
+    "train_id": "22436",
+    "train_name": "Vande Bharat Express",
+    "train_type": "PREMIUM_PASSENGER",
+    "origin": "NDLS",
+    "destination": "BSB",
+    "priority": 1,
+    "max_speed_kmh": 130,
+    "current_station_id": "ST01",
+    "next_station_id": "ST02",
+    "status": "RUNNING"
+  },
+  {
+    "train_id": "12004",
+    "train_name": "Lucknow Shatabdi Express",
+    "train_type": "PREMIUM_PASSENGER",
+    "origin": "NDLS",
+    "destination": "LKO",
+    "priority": 1,
+    "max_speed_kmh": 130,
+    "current_station_id": "ST02",
+    "next_station_id": "ST03",
+    "status": "RUNNING"
+  },
+  {
+    "train_id": "12430",
+    "train_name": "New Delhi - Lucknow AC Superfast",
+    "train_type": "PREMIUM_PASSENGER",
+    "origin": "NDLS",
+    "destination": "LKO",
+    "priority": 1,
+    "max_speed_kmh": 120,
+    "current_station_id": "ST03",
+    "next_station_id": "ST04",
+    "status": "RUNNING"
+  },
+  {
+    "train_id": "14206",
+    "train_name": "Delhi - Ayodhya Cantt Express",
+    "train_type": "EXPRESS",
+    "origin": "DLI",
+    "destination": "AYC",
+    "priority": 2,
+    "max_speed_kmh": 110,
+    "current_station_id": "ST05",
+    "next_station_id": "ST06",
+    "status": "RUNNING"
+  },
+  {
+    "train_id": "14316",
+    "train_name": "Bareilly Intercity Express",
+    "train_type": "EXPRESS",
+    "origin": "NDLS",
+    "destination": "BE",
+    "priority": 2,
+    "max_speed_kmh": 110,
+    "current_station_id": "ST07",
+    "next_station_id": "ST08",
+    "status": "RUNNING"
+  },
+  {
+    "train_id": "15128",
+    "train_name": "Kashi Vishwanath Express",
+    "train_type": "EXPRESS",
+    "origin": "NDLS",
+    "destination": "BSB",
+    "priority": 2,
+    "max_speed_kmh": 110,
+    "current_station_id": "ST08",
+    "next_station_id": "ST09",
+    "status": "SCHEDULED"
+  },
+  {
+    "train_id": "12230",
+    "train_name": "Lucknow Mail",
+    "train_type": "EXPRESS",
+    "origin": "NDLS",
+    "destination": "LKO",
+    "priority": 2,
+    "max_speed_kmh": 110,
+    "current_station_id": "ST09",
+    "next_station_id": "ST10",
+    "status": "SCHEDULED"
+  },
+  {
+    "train_id": "G-BOXN-401",
+    "train_name": "Dadri Coal Freight UP",
+    "train_type": "FREIGHT",
+    "origin": "DGR",
+    "destination": "DER",
+    "priority": 3,
+    "max_speed_kmh": 75,
+    "current_station_id": "ST04",
+    "next_station_id": "ST05",
+    "status": "RUNNING"
+  },
+  {
+    "train_id": "G-BCN-302",
+    "train_name": "Foodgrains Bulk Freight",
+    "train_type": "FREIGHT",
+    "origin": "FZR",
+    "destination": "LKO",
+    "priority": 3,
+    "max_speed_kmh": 75,
+    "current_station_id": "ST02",
+    "next_station_id": "ST07",
+    "status": "RUNNING"
+  },
+  {
+    "train_id": "G-CONT-909",
+    "train_name": "CONCOR Container Express",
+    "train_type": "FREIGHT",
+    "origin": "TKD",
+    "destination": "ICD-MB",
+    "priority": 3,
+    "max_speed_kmh": 85,
+    "current_station_id": "ST06",
+    "next_station_id": "ST07",
+    "status": "SCHEDULED"
+  }
+]

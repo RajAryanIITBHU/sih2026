@@ -1,0 +1,975 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ==========================================
+// 4. Identity & Access
+// ==========================================
+
+model User {
+  id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  employeeCode String?     @unique @map("employee_code") @db.VarChar(50)
+  name         String      @db.VarChar(150)
+  email        String      @unique @db.VarChar(255)
+  phone        String?     @db.VarChar(30)
+  passwordHash String?     @map("password_hash")
+  departmentId String?     @map("department_id") @db.Uuid
+  designation  String?     @db.VarChar(100)
+  isActive     Boolean     @default(true) @map("is_active")
+  createdAt    DateTime    @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt    DateTime    @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  department               Department?            @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  userRoles                UserRole[]
+  inspections              Inspection[]
+  reportedDefects          Defect[]
+  blockRequests            BlockRequest[]
+  maintenancePlansCreated  MaintenancePlan[]      @relation("PlanCreatedBy")
+  maintenancePlansApproved MaintenancePlan[]      @relation("PlanApprovedBy")
+  maintenanceExecutions    MaintenanceExecution[]
+  simulationScenarios      SimulationScenario[]
+  notifications            Notification[]
+  attachments              Attachment[]
+  auditLogs                AuditLog[]
+
+  @@map("users")
+}
+
+model Role {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String     @unique @db.VarChar(50)
+  description String?
+  userRoles   UserRole[]
+
+  @@map("roles")
+}
+
+model UserRole {
+  userId String @map("user_id") @db.Uuid
+  roleId String @map("role_id") @db.Uuid
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role   Role   @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+  @@map("user_roles")
+}
+
+model Department {
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code        String  @unique @db.VarChar(30)
+  name        String  @db.VarChar(100)
+  description String?
+
+  users            User[]
+  assetTypes       AssetType[]
+  maintenanceTasks MaintenanceTask[]
+  employees        Employee[]
+  teams            Team[]
+  resources        Resource[]
+  blockRequests    BlockRequest[]
+  aiAgents         AiAgent[]
+  planTasks        PlanTask[]
+  workOrders       WorkOrder[]
+
+  @@map("departments")
+}
+
+// ==========================================
+// 5. Railway Network
+// ==========================================
+
+model Zone {
+  id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code      String     @unique @db.VarChar(30)
+  name      String     @db.VarChar(150)
+  divisions Division[]
+
+  @@map("zones")
+}
+
+model Division {
+  id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  zoneId    String     @map("zone_id") @db.Uuid
+  code      String     @unique @db.VarChar(30)
+  name      String     @db.VarChar(150)
+
+  zone      Zone       @relation(fields: [zoneId], references: [id], onDelete: Restrict)
+  corridors Corridor[]
+
+  @@map("divisions")
+}
+
+model Corridor {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  divisionId     String?  @map("division_id") @db.Uuid
+  code           String   @unique @db.VarChar(30)
+  name           String   @db.VarChar(150)
+  startStationId String?  @map("start_station_id") @db.Uuid
+  endStationId   String?  @map("end_station_id") @db.Uuid
+  distanceKm     Decimal? @map("distance_km") @db.Decimal(10, 2)
+  isActive       Boolean  @default(true) @map("is_active")
+
+  division         Division?         @relation(fields: [divisionId], references: [id], onDelete: SetNull)
+  startStation     Station?          @relation("CorridorStartStation", fields: [startStationId], references: [id], onDelete: SetNull)
+  endStation       Station?          @relation("CorridorEndStation", fields: [endStationId], references: [id], onDelete: SetNull)
+  stations            Station[]            @relation("CorridorStations")
+  trackSegments       TrackSegment[]
+  assets              Asset[]
+  defects             Defect[]
+  maintenanceTasks    MaintenanceTask[]
+  timetableSlots      TimetableSlot[]
+  goodsForecasts      GoodsForecast[]
+  blockWindows        BlockWindow[]
+  blockRequests       BlockRequest[]
+  agentProposals      AgentProposal[]
+  optimizationRuns    OptimizationRun[]
+  planBlocks          PlanBlock[]
+  simulationScenarios SimulationScenario[]
+
+  @@map("corridors")
+}
+
+model Station {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  corridorId String?  @map("corridor_id") @db.Uuid
+  code       String   @unique @db.VarChar(30)
+  name       String   @db.VarChar(150)
+  latitude   Decimal? @db.Decimal(10, 7)
+  longitude  Decimal? @db.Decimal(10, 7)
+
+  corridor              Corridor?  @relation("CorridorStations", fields: [corridorId], references: [id], onDelete: SetNull)
+  corridorsStartingHere Corridor[] @relation("CorridorStartStation")
+  corridorsEndingHere   Corridor[] @relation("CorridorEndStation")
+  assets                Asset[]
+  originRuns            TrainRun[] @relation("OriginStation")
+  destinationRuns       TrainRun[] @relation("DestinationStation")
+
+  @@map("stations")
+}
+
+model TrackSegment {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  corridorId String   @map("corridor_id") @db.Uuid
+  code       String   @unique @db.VarChar(50)
+  startKm    Decimal? @map("start_km") @db.Decimal(10, 3)
+  endKm      Decimal? @map("end_km") @db.Decimal(10, 3)
+  lengthKm   Decimal? @map("length_km") @db.Decimal(10, 3)
+  geometry   Json?    @db.JsonB
+  status     String   @default("ACTIVE") @db.VarChar(30)
+
+  corridor Corridor @relation(fields: [corridorId], references: [id], onDelete: Cascade)
+  assets   Asset[]
+
+  @@map("track_segments")
+}
+
+// ==========================================
+// 6. Asset Management & 7. Assets
+// ==========================================
+
+model AssetType {
+  id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code         String      @unique @db.VarChar(50)
+  name         String      @db.VarChar(100)
+  departmentId String?     @map("department_id") @db.Uuid
+  criticality  String?     @db.VarChar(20)
+
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  assets     Asset[]
+
+  @@map("asset_types")
+}
+
+model Asset {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  assetCode         String    @unique @map("asset_code") @db.VarChar(100)
+  assetTypeId       String    @map("asset_type_id") @db.Uuid
+  corridorId        String?   @map("corridor_id") @db.Uuid
+  trackSegmentId    String?   @map("track_segment_id") @db.Uuid
+  stationId         String?   @map("station_id") @db.Uuid
+  name              String?   @db.VarChar(200)
+  description       String?
+  installationDate  DateTime? @map("installation_date") @db.Date
+  lastMaintenanceAt DateTime? @map("last_maintenance_at") @db.Timestamptz()
+  nextMaintenanceAt DateTime? @map("next_maintenance_at") @db.Timestamptz()
+  criticalityScore  Decimal?  @map("criticality_score") @db.Decimal(5, 2)
+  operationalStatus String?   @default("ACTIVE") @map("operational_status") @db.VarChar(30)
+  latitude          Decimal?  @db.Decimal(10, 7)
+  longitude         Decimal?  @db.Decimal(10, 7)
+  metadata          Json?     @db.JsonB
+  createdAt         DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt         DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  assetType        AssetType            @relation(fields: [assetTypeId], references: [id], onDelete: Restrict)
+  corridor         Corridor?            @relation(fields: [corridorId], references: [id], onDelete: SetNull)
+  trackSegment     TrackSegment?        @relation(fields: [trackSegmentId], references: [id], onDelete: SetNull)
+  station          Station?             @relation(fields: [stationId], references: [id], onDelete: SetNull)
+  healthHistories  AssetHealthHistory[]
+  inspections      Inspection[]
+  defects          Defect[]
+  maintenanceTasks MaintenanceTask[]
+  predictions      AssetPrediction[]
+  workOrders       WorkOrder[]
+
+  @@map("assets")
+}
+
+// ==========================================
+// 8. Asset Health History
+// ==========================================
+
+model DataSource {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name            String    @unique @db.VarChar(100)
+  sourceType      String?   @map("source_type") @db.VarChar(50)
+  systemName      String?   @map("system_name") @db.VarChar(100)
+  description     String?
+  endpoint        String?
+  updateFrequency Int?      @map("update_frequency")
+  status          String?   @default("ACTIVE") @db.VarChar(30)
+  lastSyncAt      DateTime? @map("last_sync_at") @db.Timestamptz()
+  nextSyncAt      DateTime? @map("next_sync_at") @db.Timestamptz()
+  configuration   Json?     @db.JsonB
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+
+  assetHealthHistories AssetHealthHistory[]
+  goodsForecasts       GoodsForecast[]
+  blockWindows         BlockWindow[]
+  syncLogs             SyncLog[]
+  dataQualityMetrics   DataQualityMetric[]
+
+  @@map("data_sources")
+}
+
+model AssetHealthHistory {
+  id                  BigInt   @id @default(autoincrement())
+  assetId             String   @map("asset_id") @db.Uuid
+  recordedAt          DateTime @map("recorded_at") @db.Timestamptz()
+  healthScore         Decimal? @map("health_score") @db.Decimal(5, 2)
+  failureProbability  Decimal? @map("failure_probability") @db.Decimal(5, 4)
+  remainingUsefulLife Decimal? @map("remaining_useful_life") @db.Decimal(10, 2)
+  conditionStatus     String?  @map("condition_status") @db.VarChar(30)
+  sourceId            String?  @map("source_id") @db.Uuid
+  measurements        Json?    @db.JsonB
+
+  asset      Asset       @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  dataSource DataSource? @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+
+  @@map("asset_health_history")
+}
+
+// ==========================================
+// 9. Inspections
+// ==========================================
+
+model Inspection {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  assetId        String   @map("asset_id") @db.Uuid
+  inspectorId    String?  @map("inspector_id") @db.Uuid
+  inspectionType String?  @map("inspection_type") @db.VarChar(100)
+  inspectionDate DateTime @map("inspection_date") @db.Timestamptz()
+  conditionScore Decimal? @map("condition_score") @db.Decimal(5, 2)
+  findings       String?
+  measurements   Json?    @db.JsonB
+  status         String?  @db.VarChar(30)
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  asset     Asset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  inspector User? @relation(fields: [inspectorId], references: [id], onDelete: SetNull)
+
+  @@map("inspections")
+}
+
+// ==========================================
+// 10. Maintenance Defects
+// ==========================================
+
+model Defect {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  defectCode    String    @unique @map("defect_code") @db.VarChar(50)
+  assetId       String    @map("asset_id") @db.Uuid
+  corridorId    String?   @map("corridor_id") @db.Uuid
+  reportedBy    String?   @map("reported_by") @db.Uuid
+  category      String    @db.VarChar(50)
+  title         String    @db.VarChar(200)
+  description   String?
+  severity      String    @db.VarChar(20)
+  status        String    @default("OPEN") @db.VarChar(30)
+  detectedAt    DateTime  @map("detected_at") @db.Timestamptz()
+  resolvedAt    DateTime? @map("resolved_at") @db.Timestamptz()
+  priorityScore Decimal?  @map("priority_score") @db.Decimal(5, 2)
+  aiRiskScore   Decimal?  @map("ai_risk_score") @db.Decimal(5, 2)
+  locationKm    Decimal?  @map("location_km") @db.Decimal(10, 3)
+  metadata      Json?     @db.JsonB
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt     DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  asset            Asset             @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  corridor         Corridor?         @relation(fields: [corridorId], references: [id], onDelete: SetNull)
+  reporter         User?             @relation(fields: [reportedBy], references: [id], onDelete: SetNull)
+  maintenanceTasks MaintenanceTask[]
+
+  @@map("defects")
+}
+
+// ==========================================
+// 11. Maintenance Tasks
+// ==========================================
+
+model MaintenanceTask {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  taskCode          String    @unique @map("task_code") @db.VarChar(50)
+  defectId          String?   @map("defect_id") @db.Uuid
+  assetId           String    @map("asset_id") @db.Uuid
+  departmentId      String?   @map("department_id") @db.Uuid
+  corridorId        String?   @map("corridor_id") @db.Uuid
+  title             String    @db.VarChar(200)
+  description       String?
+  taskType          String?   @map("task_type") @db.VarChar(50)
+  criticality       String?   @db.VarChar(20)
+  urgency           String?   @db.VarChar(20)
+  estimatedDuration Int       @map("estimated_duration")
+  requiredWorkers   Int       @default(1) @map("required_workers")
+  dueDate           DateTime? @map("due_date") @db.Timestamptz()
+  status            String    @default("PENDING") @db.VarChar(30)
+  aiPriorityScore   Decimal?  @map("ai_priority_score") @db.Decimal(5, 2)
+  createdAt         DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt         DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  defect            Defect?             @relation(fields: [defectId], references: [id], onDelete: SetNull)
+  asset             Asset               @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  department        Department?         @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  corridor          Corridor?           @relation(fields: [corridorId], references: [id], onDelete: SetNull)
+  blockConflicts    BlockConflict[]
+  priorityScores    TaskPriorityScore[]
+  aiRecommendations AiRecommendation[]
+  agentProposals    AgentProposal[]
+  planTasks         PlanTask[]
+  workOrders        WorkOrder[]
+
+  @@map("maintenance_tasks")
+}
+
+// ==========================================
+// 12. Resources
+// ==========================================
+
+model Employee {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  employeeCode String       @unique @map("employee_code") @db.VarChar(50)
+  name         String       @db.VarChar(150)
+  departmentId String?      @map("department_id") @db.Uuid
+  role         String?      @db.VarChar(100)
+  skillSet     Json?        @map("skill_set") @db.JsonB
+  availability String       @default("AVAILABLE") @db.VarChar(30)
+
+  department         Department?          @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  teamMembers        TeamMember[]
+  workOrderResources WorkOrderResource[]
+
+  @@map("employees")
+}
+
+model Team {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  departmentId String?      @map("department_id") @db.Uuid
+  name         String       @db.VarChar(150)
+  teamType     String?      @map("team_type") @db.VarChar(50)
+  capacity     Int          @default(1)
+  status       String       @default("AVAILABLE") @db.VarChar(30)
+
+  department Department?  @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  members    TeamMember[]
+  workOrders WorkOrder[]
+
+  @@map("teams")
+}
+
+model TeamMember {
+  teamId     String   @map("team_id") @db.Uuid
+  employeeId String   @map("employee_id") @db.Uuid
+
+  team     Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@id([teamId, employeeId])
+  @@map("team_members")
+}
+
+model Resource {
+  id                 String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resourceCode       String              @unique @map("resource_code") @db.VarChar(50)
+  name               String              @db.VarChar(150)
+  resourceType       String?             @map("resource_type") @db.VarChar(50)
+  departmentId       String?             @map("department_id") @db.Uuid
+  status             String              @default("AVAILABLE") @db.VarChar(30)
+
+  department         Department?         @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  workOrderResources WorkOrderResource[]
+
+  @@map("resources")
+}
+
+// ==========================================
+// 13. Train Operations
+// ==========================================
+
+model Train {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  trainNumber String     @unique @map("train_number") @db.VarChar(30)
+  trainName   String?    @map("train_name") @db.VarChar(150)
+  trainType   String?    @map("train_type") @db.VarChar(30)
+  operator    String?    @db.VarChar(100)
+  priority    Int        @default(1)
+
+  runs TrainRun[]
+
+  @@map("trains")
+}
+
+model TrainRun {
+  id                   String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  trainId              String          @map("train_id") @db.Uuid
+  runDate              DateTime        @map("run_date") @db.Date
+  originStationId      String?         @map("origin_station_id") @db.Uuid
+  destinationStationId String?         @map("destination_station_id") @db.Uuid
+  status               String?         @db.VarChar(30)
+  actualDelayMinutes   Int             @default(0) @map("actual_delay_minutes")
+
+  train              Train           @relation(fields: [trainId], references: [id], onDelete: Cascade)
+  originStation      Station?        @relation("OriginStation", fields: [originStationId], references: [id], onDelete: SetNull)
+  destinationStation Station?        @relation("DestinationStation", fields: [destinationStationId], references: [id], onDelete: SetNull)
+  timetableSlots     TimetableSlot[]
+  blockConflicts     BlockConflict[]
+
+  @@map("train_runs")
+}
+
+model TimetableSlot {
+  id                  String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  trainRunId          String?  @map("train_run_id") @db.Uuid
+  corridorId          String?  @map("corridor_id") @db.Uuid
+  startTime           DateTime @map("start_time") @db.Timestamptz()
+  endTime             DateTime @map("end_time") @db.Timestamptz()
+  direction           String?  @db.VarChar(20)
+  operationalPriority Int      @default(1) @map("operational_priority")
+
+  trainRun TrainRun? @relation(fields: [trainRunId], references: [id], onDelete: Cascade)
+  corridor Corridor? @relation(fields: [corridorId], references: [id], onDelete: SetNull)
+
+  @@map("timetable_slots")
+}
+
+// ==========================================
+// 14. Goods Train Forecast
+// ==========================================
+
+model GoodsForecast {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  corridorId         String   @map("corridor_id") @db.Uuid
+  forecastDate       DateTime @map("forecast_date") @db.Date
+  forecastHour       Int?     @map("forecast_hour")
+  expectedTrainCount Int?     @map("expected_train_count")
+  expectedVolume     Decimal? @map("expected_volume") @db.Decimal(12, 2)
+  trafficDensity     Decimal? @map("traffic_density") @db.Decimal(8, 2)
+  confidenceScore    Decimal? @map("confidence_score") @db.Decimal(5, 2)
+  sourceId           String?  @map("source_id") @db.Uuid
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  corridor   Corridor    @relation(fields: [corridorId], references: [id], onDelete: Cascade)
+  dataSource DataSource? @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+
+  @@map("goods_forecasts")
+}
+
+// ==========================================
+// 15. Block Management & 16. Block Requests & 17. Block Conflicts
+// ==========================================
+
+model BlockWindow {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  corridorId      String   @map("corridor_id") @db.Uuid
+  startTime       DateTime @map("start_time") @db.Timestamptz()
+  endTime         DateTime @map("end_time") @db.Timestamptz()
+  status          String   @default("AVAILABLE") @db.VarChar(30)
+  capacityMinutes Int?     @map("capacity_minutes")
+  sourceId        String?  @map("source_id") @db.Uuid
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  corridor          Corridor           @relation(fields: [corridorId], references: [id], onDelete: Cascade)
+  dataSource        DataSource?        @relation(fields: [sourceId], references: [id], onDelete: SetNull)
+  conflicts         BlockConflict[]
+  aiRecommendations AiRecommendation[]
+  planBlocks        PlanBlock[]
+
+  @@map("block_windows")
+}
+
+model BlockRequest {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  requestCode     String    @unique @map("request_code") @db.VarChar(50)
+  departmentId    String    @map("department_id") @db.Uuid
+  corridorId      String    @map("corridor_id") @db.Uuid
+  requestedStart  DateTime? @map("requested_start") @db.Timestamptz()
+  requestedEnd    DateTime? @map("requested_end") @db.Timestamptz()
+  durationMinutes Int       @map("duration_minutes")
+  reason          String?
+  priority        String?   @db.VarChar(20)
+  status          String    @default("PENDING") @db.VarChar(30)
+  createdBy       String?   @map("created_by") @db.Uuid
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+
+  department Department @relation(fields: [departmentId], references: [id], onDelete: Restrict)
+  corridor   Corridor   @relation(fields: [corridorId], references: [id], onDelete: Cascade)
+  creator    User?      @relation(fields: [createdBy], references: [id], onDelete: SetNull)
+
+  @@map("block_requests")
+}
+
+model BlockConflict {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  blockWindowId     String?   @map("block_window_id") @db.Uuid
+  trainRunId        String?   @map("train_run_id") @db.Uuid
+  maintenanceTaskId String?   @map("maintenance_task_id") @db.Uuid
+  conflictType      String?   @map("conflict_type") @db.VarChar(50)
+  severity          String?   @db.VarChar(20)
+  estimatedDelay    Int?      @map("estimated_delay")
+  resolutionStatus  String    @default("OPEN") @map("resolution_status") @db.VarChar(30)
+  detectedAt        DateTime  @default(now()) @map("detected_at") @db.Timestamptz()
+
+  blockWindow     BlockWindow?     @relation(fields: [blockWindowId], references: [id], onDelete: SetNull)
+  trainRun        TrainRun?        @relation(fields: [trainRunId], references: [id], onDelete: SetNull)
+  maintenanceTask MaintenanceTask? @relation(fields: [maintenanceTaskId], references: [id], onDelete: SetNull)
+
+  @@map("block_conflicts")
+}
+
+// ==========================================
+// 18. AI / ML Predictions & 19. Task Priority Scores
+// ==========================================
+
+model AssetPrediction {
+  id                 BigInt   @id @default(autoincrement())
+  assetId            String   @map("asset_id") @db.Uuid
+  modelName          String?  @map("model_name") @db.VarChar(100)
+  modelVersion       String?  @map("model_version") @db.VarChar(50)
+  predictionTime     DateTime @map("prediction_time") @db.Timestamptz()
+  failureProbability Decimal? @map("failure_probability") @db.Decimal(6, 5)
+  rulValue           Decimal? @map("rul_value") @db.Decimal(10, 2)
+  confidenceScore    Decimal? @map("confidence_score") @db.Decimal(5, 2)
+  prediction         Json?    @db.JsonB
+
+  asset Asset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+
+  @@map("asset_predictions")
+}
+
+model TaskPriorityScore {
+  id                     BigInt   @id @default(autoincrement())
+  taskId                 String   @map("task_id") @db.Uuid
+  calculatedAt           DateTime @default(now()) @map("calculated_at") @db.Timestamptz()
+  failureRisk            Decimal? @map("failure_risk") @db.Decimal(5, 2)
+  criticalityScore       Decimal? @map("criticality_score") @db.Decimal(5, 2)
+  urgencyScore           Decimal? @map("urgency_score") @db.Decimal(5, 2)
+  assetImpactScore       Decimal? @map("asset_impact_score") @db.Decimal(5, 2)
+  trafficImpactScore     Decimal? @map("traffic_impact_score") @db.Decimal(5, 2)
+  overdueScore           Decimal? @map("overdue_score") @db.Decimal(5, 2)
+  historicalFailureScore Decimal? @map("historical_failure_score") @db.Decimal(5, 2)
+  finalScore             Decimal? @map("final_score") @db.Decimal(5, 2)
+  modelVersion           String?  @map("model_version") @db.VarChar(50)
+  explanation            Json?    @db.JsonB
+
+  task MaintenanceTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@map("task_priority_scores")
+}
+
+// ==========================================
+// 20. AI Recommendations
+// ==========================================
+
+model AiRecommendation {
+  id                       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  recommendationType       String?  @map("recommendation_type") @db.VarChar(50)
+  maintenanceTaskId        String?  @map("maintenance_task_id") @db.Uuid
+  blockWindowId            String?  @map("block_window_id") @db.Uuid
+  recommendationText       String?  @map("recommendation_text")
+  confidenceScore          Decimal? @map("confidence_score") @db.Decimal(5, 2)
+  expectedDelay            Int?     @map("expected_delay")
+  expectedAvailabilityGain Decimal? @map("expected_availability_gain") @db.Decimal(5, 2)
+  reasoning                Json?    @db.JsonB
+  status                   String?  @default("PENDING") @db.VarChar(30)
+  createdAt                DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  maintenanceTask MaintenanceTask? @relation(fields: [maintenanceTaskId], references: [id], onDelete: SetNull)
+  blockWindow     BlockWindow?     @relation(fields: [blockWindowId], references: [id], onDelete: SetNull)
+
+  @@map("ai_recommendations")
+}
+
+// ==========================================
+// 21. Multi-Agent AI & 22. Agent Proposals
+// ==========================================
+
+model AiAgent {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String   @unique @db.VarChar(100)
+  agentType    String?  @map("agent_type") @db.VarChar(50)
+  departmentId String?  @map("department_id") @db.Uuid
+  description  String?
+  isActive     Boolean  @default(true) @map("is_active")
+
+  department Department?     @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  proposals  AgentProposal[]
+
+  @@map("ai_agents")
+}
+
+model AgentProposal {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  agentId       String    @map("agent_id") @db.Uuid
+  taskId        String?   @map("task_id") @db.Uuid
+  corridorId    String?   @map("corridor_id") @db.Uuid
+  proposedStart DateTime? @map("proposed_start") @db.Timestamptz()
+  proposedEnd   DateTime? @map("proposed_end") @db.Timestamptz()
+  priorityScore Decimal?  @map("priority_score") @db.Decimal(5, 2)
+  proposal      Json?     @db.JsonB
+  status        String?   @default("PROPOSED") @db.VarChar(30)
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+
+  agent    AiAgent          @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  task     MaintenanceTask? @relation(fields: [taskId], references: [id], onDelete: SetNull)
+  corridor Corridor?        @relation(fields: [corridorId], references: [id], onDelete: SetNull)
+
+  @@map("agent_proposals")
+}
+
+// ==========================================
+// 23. Optimization Engine & 24. Constraints
+// ==========================================
+
+model OptimizationRun {
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  corridorId     String?   @map("corridor_id") @db.Uuid
+  planningStart  DateTime? @map("planning_start") @db.Timestamptz()
+  planningEnd    DateTime? @map("planning_end") @db.Timestamptz()
+  objective      Json?     @db.JsonB
+  constraints    Json?     @db.JsonB
+  solver         String?   @default("OR-TOOLS-CP-SAT") @db.VarChar(50)
+  status         String?   @db.VarChar(30)
+  startedAt      DateTime? @map("started_at") @db.Timestamptz()
+  completedAt    DateTime? @map("completed_at") @db.Timestamptz()
+  objectiveScore Decimal?  @map("objective_score") @db.Decimal(10, 2)
+  runtimeMs      Int?      @map("runtime_ms")
+  resultSummary  Json?     @map("result_summary") @db.JsonB
+
+  corridor                Corridor?                @relation(fields: [corridorId], references: [id], onDelete: SetNull)
+  optimizationConstraints OptimizationConstraint[]
+  maintenancePlans        MaintenancePlan[]
+
+  @@map("optimization_runs")
+}
+
+model OptimizationConstraint {
+  id                String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  optimizationRunId String   @map("optimization_run_id") @db.Uuid
+  constraintType    String?  @map("constraint_type") @db.VarChar(50)
+  constraintName    String?  @map("constraint_name") @db.VarChar(150)
+  hardConstraint    Boolean  @default(true) @map("hard_constraint")
+  weight            Decimal? @db.Decimal(10, 4)
+  parameters        Json?    @db.JsonB
+
+  optimizationRun OptimizationRun @relation(fields: [optimizationRunId], references: [id], onDelete: Cascade)
+
+  @@map("optimization_constraints")
+}
+
+// ==========================================
+// 25. Maintenance Plans, 26. Plan Blocks, 27. Plan Tasks
+// ==========================================
+
+model MaintenancePlan {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  planCode          String    @unique @map("plan_code") @db.VarChar(50)
+  optimizationRunId String?   @map("optimization_run_id") @db.Uuid
+  planType          String?   @map("plan_type") @db.VarChar(20)
+  startDate         DateTime? @map("start_date") @db.Date
+  endDate           DateTime? @map("end_date") @db.Date
+  status            String?   @default("DRAFT") @db.VarChar(30)
+  totalTasks        Int?      @default(0) @map("total_tasks")
+  totalBlocks       Int?      @default(0) @map("total_blocks")
+  optimizationScore Decimal?  @map("optimization_score") @db.Decimal(5, 2)
+  createdBy         String?   @map("created_by") @db.Uuid
+  approvedBy        String?   @map("approved_by") @db.Uuid
+  approvedAt        DateTime? @map("approved_at") @db.Timestamptz()
+  createdAt         DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+
+  optimizationRun     OptimizationRun?     @relation(fields: [optimizationRunId], references: [id], onDelete: SetNull)
+  creator             User?                @relation("PlanCreatedBy", fields: [createdBy], references: [id], onDelete: SetNull)
+  approver            User?                @relation("PlanApprovedBy", fields: [approvedBy], references: [id], onDelete: SetNull)
+  planBlocks          PlanBlock[]
+  simulationScenarios SimulationScenario[]
+
+  @@map("maintenance_plans")
+}
+
+model PlanBlock {
+  id                    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  planId                String   @map("plan_id") @db.Uuid
+  blockWindowId         String?  @map("block_window_id") @db.Uuid
+  corridorId            String   @map("corridor_id") @db.Uuid
+  startTime             DateTime @map("start_time") @db.Timestamptz()
+  endTime               DateTime @map("end_time") @db.Timestamptz()
+  status                String?  @db.VarChar(30)
+  optimizationScore     Decimal? @map("optimization_score") @db.Decimal(5, 2)
+  expectedDelay         Int?     @default(0) @map("expected_delay")
+  assetAvailabilityGain Decimal? @map("asset_availability_gain") @db.Decimal(5, 2)
+
+  plan        MaintenancePlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  blockWindow BlockWindow?    @relation(fields: [blockWindowId], references: [id], onDelete: SetNull)
+  corridor    Corridor        @relation(fields: [corridorId], references: [id], onDelete: Cascade)
+  planTasks   PlanTask[]
+  workOrders  WorkOrder[]
+
+  @@map("plan_blocks")
+}
+
+model PlanTask {
+  id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  planBlockId       String  @map("plan_block_id") @db.Uuid
+  maintenanceTaskId String  @map("maintenance_task_id") @db.Uuid
+  departmentId      String? @map("department_id") @db.Uuid
+  sequenceOrder     Int?    @map("sequence_order")
+  allocatedDuration Int?    @map("allocated_duration")
+  status            String? @db.VarChar(30)
+
+  planBlock       PlanBlock       @relation(fields: [planBlockId], references: [id], onDelete: Cascade)
+  maintenanceTask MaintenanceTask @relation(fields: [maintenanceTaskId], references: [id], onDelete: Cascade)
+  department      Department?     @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  @@unique([planBlockId, maintenanceTaskId])
+  @@map("plan_tasks")
+}
+
+// ==========================================
+// 28. Work Orders & 29. Work Order Resources & 30. Maintenance Executions
+// ==========================================
+
+model WorkOrder {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  workOrderCode      String    @unique @map("work_order_code") @db.VarChar(50)
+  maintenanceTaskId  String?   @map("maintenance_task_id") @db.Uuid
+  planBlockId        String?   @map("plan_block_id") @db.Uuid
+  assetId            String    @map("asset_id") @db.Uuid
+  departmentId       String?   @map("department_id") @db.Uuid
+  assignedTeamId     String?   @map("assigned_team_id") @db.Uuid
+  priority           String?   @db.VarChar(20)
+  status             String?   @default("OPEN") @db.VarChar(30)
+  scheduledStart     DateTime? @map("scheduled_start") @db.Timestamptz()
+  scheduledEnd       DateTime? @map("scheduled_end") @db.Timestamptz()
+  actualStart        DateTime? @map("actual_start") @db.Timestamptz()
+  actualEnd          DateTime? @map("actual_end") @db.Timestamptz()
+  progressPercent    Decimal?  @default(0) @map("progress_percent") @db.Decimal(5, 2)
+  description        String?
+  safetyRequirements Json?     @map("safety_requirements") @db.JsonB
+  createdAt          DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt          DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  maintenanceTask       MaintenanceTask?        @relation(fields: [maintenanceTaskId], references: [id], onDelete: SetNull)
+  planBlock             PlanBlock?              @relation(fields: [planBlockId], references: [id], onDelete: SetNull)
+  asset                 Asset                   @relation(fields: [assetId], references: [id], onDelete: Restrict)
+  department            Department?             @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  assignedTeam          Team?                   @relation(fields: [assignedTeamId], references: [id], onDelete: SetNull)
+  workOrderResources    WorkOrderResource[]
+  maintenanceExecutions MaintenanceExecution[]
+
+  @@map("work_orders")
+}
+
+model WorkOrderResource {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  workOrderId   String    @map("work_order_id") @db.Uuid
+  resourceId    String?   @map("resource_id") @db.Uuid
+  employeeId    String?   @map("employee_id") @db.Uuid
+  quantity      Int?      @default(1)
+  allocatedFrom DateTime? @map("allocated_from") @db.Timestamptz()
+  allocatedTo   DateTime? @map("allocated_to") @db.Timestamptz()
+
+  workOrder WorkOrder @relation(fields: [workOrderId], references: [id], onDelete: Cascade)
+  resource  Resource? @relation(fields: [resourceId], references: [id], onDelete: SetNull)
+  employee  Employee? @relation(fields: [employeeId], references: [id], onDelete: SetNull)
+
+  @@map("work_order_resources")
+}
+
+model MaintenanceExecution {
+  id                  String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  workOrderId         String    @map("work_order_id") @db.Uuid
+  startedAt           DateTime? @map("started_at") @db.Timestamptz()
+  completedAt         DateTime? @map("completed_at") @db.Timestamptz()
+  actualDuration      Int?      @map("actual_duration")
+  completionStatus    String?   @map("completion_status") @db.VarChar(30)
+  delayMinutes        Int?      @default(0) @map("delay_minutes")
+  issueFound          Boolean?  @default(false) @map("issue_found")
+  executionNotes      String?   @map("execution_notes")
+  assetConditionAfter Decimal?  @map("asset_condition_after") @db.Decimal(5, 2)
+  executedBy          String?   @map("executed_by") @db.Uuid
+
+  workOrder WorkOrder @relation(fields: [workOrderId], references: [id], onDelete: Cascade)
+  executor  User?     @relation(fields: [executedBy], references: [id], onDelete: SetNull)
+
+  @@map("maintenance_executions")
+}
+
+// ==========================================
+// 31. Digital Twin (Simulations)
+// ==========================================
+
+model SimulationScenario {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String?  @db.VarChar(150)
+  corridorId  String?  @map("corridor_id") @db.Uuid
+  description String?
+  basePlanId  String?  @map("base_plan_id") @db.Uuid
+  parameters  Json?    @db.JsonB
+  createdBy   String?  @map("created_by") @db.Uuid
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  corridor       Corridor?         @relation(fields: [corridorId], references: [id], onDelete: SetNull)
+  basePlan       MaintenancePlan?  @relation(fields: [basePlanId], references: [id], onDelete: SetNull)
+  creator        User?             @relation(fields: [createdBy], references: [id], onDelete: SetNull)
+  simulationRuns SimulationRun[]
+
+  @@map("simulation_scenarios")
+}
+
+model SimulationRun {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  scenarioId    String    @map("scenario_id") @db.Uuid
+  status        String?   @db.VarChar(30)
+  startedAt     DateTime? @map("started_at") @db.Timestamptz()
+  completedAt   DateTime? @map("completed_at") @db.Timestamptz()
+  resultSummary Json?     @map("result_summary") @db.JsonB
+
+  scenario          SimulationScenario @relation(fields: [scenarioId], references: [id], onDelete: Cascade)
+  simulationResults SimulationResult[]
+
+  @@map("simulation_runs")
+}
+
+model SimulationResult {
+  id                        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  simulationRunId           String   @map("simulation_run_id") @db.Uuid
+  trainConflicts            Int?     @default(0) @map("train_conflicts")
+  affectedTrains            Int?     @default(0) @map("affected_trains")
+  expectedDelay             Int?     @default(0) @map("expected_delay")
+  maintenanceTasksCompleted Int?     @default(0) @map("maintenance_tasks_completed")
+  assetAvailability         Decimal? @map("asset_availability") @db.Decimal(5, 2)
+  infrastructureImpact      Decimal? @map("infrastructure_impact") @db.Decimal(5, 2)
+  riskScore                 Decimal? @map("risk_score") @db.Decimal(5, 2)
+  recommendations           Json?    @db.JsonB
+
+  simulationRun SimulationRun @relation(fields: [simulationRunId], references: [id], onDelete: Cascade)
+
+  @@map("simulation_results")
+}
+
+// ==========================================
+// 35. Sync Logs & 36. Data Quality Metrics
+// ==========================================
+
+model SyncLog {
+  id              BigInt    @id @default(autoincrement())
+  sourceId        String    @map("source_id") @db.Uuid
+  startedAt       DateTime? @map("started_at") @db.Timestamptz()
+  completedAt     DateTime? @map("completed_at") @db.Timestamptz()
+  status          String?   @db.VarChar(30)
+  recordsReceived Int?      @default(0) @map("records_received")
+  recordsInserted Int?      @default(0) @map("records_inserted")
+  recordsUpdated  Int?      @default(0) @map("records_updated")
+  recordsFailed   Int?      @default(0) @map("records_failed")
+  errorMessage    String?   @map("error_message")
+
+  dataSource DataSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  @@map("sync_logs")
+}
+
+model DataQualityMetric {
+  id             BigInt   @id @default(autoincrement())
+  sourceId       String   @map("source_id") @db.Uuid
+  measuredAt     DateTime @map("measured_at") @db.Timestamptz()
+  totalRecords   Int?     @map("total_records")
+  validRecords   Int?     @map("valid_records")
+  missingRecords Int?     @map("missing_records")
+  errorRecords   Int?     @map("error_records")
+  qualityScore   Decimal? @map("quality_score") @db.Decimal(5, 2)
+
+  dataSource DataSource @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+
+  @@map("data_quality_metrics")
+}
+
+// ==========================================
+// 37. Notifications, 38. Attachments, 39. Audit Logs
+// ==========================================
+
+model Notification {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId        String?  @map("user_id") @db.Uuid
+  type          String?  @db.VarChar(50)
+  title         String?  @db.VarChar(200)
+  message       String?
+  severity      String?  @db.VarChar(20)
+  isRead        Boolean  @default(false) @map("is_read")
+  referenceType String?  @map("reference_type") @db.VarChar(50)
+  referenceId   String?  @map("reference_id") @db.Uuid
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+model Attachment {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  entityType String   @map("entity_type") @db.VarChar(50)
+  entityId   String   @map("entity_id") @db.Uuid
+  fileName   String?  @map("file_name") @db.VarChar(255)
+  fileUrl    String?  @map("file_url")
+  mimeType   String?  @map("mime_type") @db.VarChar(100)
+  fileSize   BigInt?  @map("file_size")
+  uploadedBy String?  @map("uploaded_by") @db.Uuid
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  uploader User? @relation(fields: [uploadedBy], references: [id], onDelete: SetNull)
+
+  @@map("attachments")
+}
+
+model AuditLog {
+  id         BigInt   @id @default(autoincrement())
+  userId     String?  @map("user_id") @db.Uuid
+  action     String   @db.VarChar(100)
+  entityType String?  @map("entity_type") @db.VarChar(50)
+  entityId   String?  @map("entity_id") @db.Uuid
+  oldValues  Json?    @map("old_values") @db.JsonB
+  newValues  Json?    @map("new_values") @db.JsonB
+  ipAddress  String?  @map("ip_address") @db.Inet
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz()
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("audit_logs")
+}

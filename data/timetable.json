@@ -1,0 +1,122 @@
+[
+  {
+    "slot_id": "SLOT001",
+    "train_id": "22436",
+    "track_id": "TRK01",
+    "from_station_id": "ST01",
+    "to_station_id": "ST02",
+    "scheduled_departure": "06:00",
+    "scheduled_arrival": "06:22",
+    "direction": "DN",
+    "is_critical": true,
+    "corridor_window_available": false
+  },
+  {
+    "slot_id": "SLOT002",
+    "train_id": "12004",
+    "track_id": "TRK02",
+    "from_station_id": "ST02",
+    "to_station_id": "ST03",
+    "scheduled_departure": "06:45",
+    "scheduled_arrival": "07:12",
+    "direction": "DN",
+    "is_critical": true,
+    "corridor_window_available": false
+  },
+  {
+    "slot_id": "SLOT003",
+    "train_id": "12430",
+    "track_id": "TRK03",
+    "from_station_id": "ST03",
+    "to_station_id": "ST04",
+    "scheduled_departure": "07:30",
+    "scheduled_arrival": "07:50",
+    "direction": "DN",
+    "is_critical": true,
+    "corridor_window_available": false
+  },
+  {
+    "slot_id": "SLOT004",
+    "train_id": "14206",
+    "track_id": "TRK04",
+    "from_station_id": "ST04",
+    "to_station_id": "ST05",
+    "scheduled_departure": "08:15",
+    "scheduled_arrival": "08:35",
+    "direction": "DN",
+    "is_critical": false,
+    "corridor_window_available": true
+  },
+  {
+    "slot_id": "SLOT005",
+    "train_id": "14316",
+    "track_id": "TRK06",
+    "from_station_id": "ST06",
+    "to_station_id": "ST07",
+    "scheduled_departure": "09:00",
+    "scheduled_arrival": "09:25",
+    "direction": "DN",
+    "is_critical": false,
+    "corridor_window_available": true
+  },
+  {
+    "slot_id": "SLOT006",
+    "train_id": "15128",
+    "track_id": "TRK07",
+    "from_station_id": "ST07",
+    "to_station_id": "ST08",
+    "scheduled_departure": "10:10",
+    "scheduled_arrival": "10:32",
+    "direction": "DN",
+    "is_critical": false,
+    "corridor_window_available": true
+  },
+  {
+    "slot_id": "SLOT007",
+    "train_id": "12230",
+    "track_id": "TRK08",
+    "from_station_id": "ST08",
+    "to_station_id": "ST09",
+    "scheduled_departure": "11:00",
+    "scheduled_arrival": "11:45",
+    "direction": "DN",
+    "is_critical": false,
+    "corridor_window_available": true
+  },
+  {
+    "slot_id": "SLOT008",
+    "train_id": "G-BOXN-401",
+    "track_id": "TRK04",
+    "from_station_id": "ST04",
+    "to_station_id": "ST05",
+    "scheduled_departure": "13:00",
+    "scheduled_arrival": "13:35",
+    "direction": "UP",
+    "is_critical": false,
+    "corridor_window_available": true
+  },
+  {
+    "slot_id": "SLOT009",
+    "train_id": "G-BCN-302",
+    "track_id": "TRK10",
+    "from_station_id": "ST02",
+    "to_station_id": "ST07",
+    "scheduled_departure": "14:00",
+    "scheduled_arrival": "16:15",
+    "direction": "DN",
+    "is_critical": false,
+    "corridor_window_available": true
+  },
+  {
+    "slot_id": "SLOT010",
+    "train_id": "G-CONT-909",
+    "track_id": "TRK06",
+    "from_station_id": "ST06",
+    "to_station_id": "ST07",
+    "scheduled_departure": "15:30",
+    "scheduled_arrival": "16:05",
+    "direction": "UP",
+    "is_critical": false,
+    "corridor_window_available": true
+  }
+]

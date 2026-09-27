@@ -1,0 +1,122 @@
+[
+  {
+    "forecast_id": "FC001",
+    "rake_type": "BOXN_COAL",
+    "origin_station": "DGR",
+    "destination_station": "DER",
+    "expected_track_id": "TRK04",
+    "forecast_entry_time": "10:30",
+    "forecast_exit_time": "11:15",
+    "tonnage": 3850.0,
+    "speed_restriction_kmh": 60,
+    "flexibility_window_mins": 45
+  },
+  {
+    "forecast_id": "FC002",
+    "rake_type": "BCN_GRAIN",
+    "origin_station": "FZR",
+    "destination_station": "LKO",
+    "expected_track_id": "TRK02",
+    "forecast_entry_time": "11:45",
+    "forecast_exit_time": "12:40",
+    "tonnage": 3200.0,
+    "speed_restriction_kmh": 75,
+    "flexibility_window_mins": 60
+  },
+  {
+    "forecast_id": "FC003",
+    "rake_type": "BTPN_OIL",
+    "origin_station": "MATHURA_REF",
+    "destination_station": "BE_POL",
+    "expected_track_id": "TRK07",
+    "forecast_entry_time": "12:15",
+    "forecast_exit_time": "13:00",
+    "tonnage": 2900.0,
+    "speed_restriction_kmh": 65,
+    "flexibility_window_mins": 30
+  },
+  {
+    "forecast_id": "FC004",
+    "rake_type": "CONTAINER_CONCOR",
+    "origin_station": "TKD",
+    "destination_station": "ICD-MB",
+    "expected_track_id": "TRK05",
+    "forecast_entry_time": "13:20",
+    "forecast_exit_time": "14:05",
+    "tonnage": 2600.0,
+    "speed_restriction_kmh": 85,
+    "flexibility_window_mins": 90
+  },
+  {
+    "forecast_id": "FC005",
+    "rake_type": "BOBRN_RAPID_DISCHARGE",
+    "origin_station": "KORBA",
+    "destination_station": "HARDUAGANJ",
+    "expected_track_id": "TRK01",
+    "forecast_entry_time": "14:10",
+    "forecast_exit_time": "14:55",
+    "tonnage": 4100.0,
+    "speed_restriction_kmh": 60,
+    "flexibility_window_mins": 30
+  },
+  {
+    "forecast_id": "FC006",
+    "rake_type": "BCACBM_AUTOMOBILE",
+    "origin_station": "MARUTI_GURGAON",
+    "destination_station": "GHY",
+    "expected_track_id": "TRK08",
+    "forecast_entry_time": "15:00",
+    "forecast_exit_time": "16:20",
+    "tonnage": 1800.0,
+    "speed_restriction_kmh": 80,
+    "flexibility_window_mins": 75
+  },
+  {
+    "forecast_id": "FC007",
+    "rake_type": "BOXNHL_IRON_ORE",
+    "origin_station": "NOMD",
+    "destination_station": "PANKI",
+    "expected_track_id": "TRK10",
+    "forecast_entry_time": "15:45",
+    "forecast_exit_time": "18:00",
+    "tonnage": 4200.0,
+    "speed_restriction_kmh": 60,
+    "flexibility_window_mins": 120
+  },
+  {
+    "forecast_id": "FC008",
+    "rake_type": "BCCN_CEMENT",
+    "origin_station": "CHANDERIA",
+    "destination_station": "MB_GOODS",
+    "expected_track_id": "TRK06",
+    "forecast_entry_time": "17:15",
+    "forecast_exit_time": "18:05",
+    "tonnage": 3400.0,
+    "speed_restriction_kmh": 70,
+    "flexibility_window_mins": 60
+  },
+  {
+    "forecast_id": "FC009",
+    "rake_type": "BFNS_STEEL_COIL",
+    "origin_station": "BOKARO",
+    "destination_station": "DER_STEEL",
+    "expected_track_id": "TRK03",
+    "forecast_entry_time": "18:30",
+    "forecast_exit_time": "19:15",
+    "tonnage": 3600.0,
+    "speed_restriction_kmh": 65,
+    "flexibility_window_mins": 45
+  },
+  {
+    "forecast_id": "FC010",
+    "rake_type": "PARCEL_VAN_EXPRESS",
+    "origin_station": "DLI",
+    "destination_station": "HWH",
+    "expected_track_id": "TRK09",
+    "forecast_entry_time": "19:40",
+    "forecast_exit_time": "21:00",
+    "tonnage": 1200.0,
+    "speed_restriction_kmh": 90,
+    "flexibility_window_mins": 30
+  }
+]

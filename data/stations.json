@@ -1,0 +1,112 @@
+[
+  {
+    "station_id": "ST01",
+    "code": "NDLS",
+    "name": "New Delhi",
+    "division": "Delhi",
+    "zone": "NR",
+    "lat": 28.6429,
+    "lon": 77.2195,
+    "platforms": 16,
+    "km_marker": 0.0
+  },
+  {
+    "station_id": "ST02",
+    "code": "GZB",
+    "name": "Ghaziabad Jn",
+    "division": "Delhi",
+    "zone": "NR",
+    "lat": 28.6679,
+    "lon": 77.4349,
+    "platforms": 6,
+    "km_marker": 25.6
+  },
+  {
+    "station_id": "ST03",
+    "code": "HPU",
+    "name": "Hapur Jn",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 28.7306,
+    "lon": 77.7807,
+    "platforms": 5,
+    "km_marker": 62.4
+  },
+  {
+    "station_id": "ST04",
+    "code": "GMS",
+    "name": "Garhmukteshwar",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 28.7853,
+    "lon": 78.0964,
+    "platforms": 3,
+    "km_marker": 88.2
+  },
+  {
+    "station_id": "ST05",
+    "code": "GJL",
+    "name": "Gajraula Jn",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 28.8472,
+    "lon": 78.2389,
+    "platforms": 4,
+    "km_marker": 109.1
+  },
+  {
+    "station_id": "ST06",
+    "code": "AMRO",
+    "name": "Amroha",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 28.9042,
+    "lon": 78.4683,
+    "platforms": 3,
+    "km_marker": 132.3
+  },
+  {
+    "station_id": "ST07",
+    "code": "MB",
+    "name": "Moradabad Jn",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 28.8386,
+    "lon": 78.7733,
+    "platforms": 7,
+    "km_marker": 162.8
+  },
+  {
+    "station_id": "ST08",
+    "code": "RMU",
+    "name": "Rampur Jn",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 28.8153,
+    "lon": 79.0256,
+    "platforms": 3,
+    "km_marker": 189.9
+  },
+  {
+    "station_id": "ST09",
+    "code": "BE",
+    "name": "Bareilly Jn",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 28.3470,
+    "lon": 79.4189,
+    "platforms": 6,
+    "km_marker": 253.2
+  },
+  {
+    "station_id": "ST10",
+    "code": "SPN",
+    "name": "Shahjahanpur",
+    "division": "Moradabad",
+    "zone": "NR",
+    "lat": 27.8814,
+    "lon": 79.9142,
+    "platforms": 4,
+    "km_marker": 331.5
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "crew_id": "CRW01",
+    "gang_name": "P-Way Heavy Tamping Gang GZB",
+    "department": "ENGINEERING",
+    "base_station_id": "ST02",
+    "headcount": 14,
+    "lead_supervisor": "A. K. Sharma (SSE/P-Way)",
+    "skills": ["RAIL_TAMPING", "BALLAST_CLEANING", "DEEP_SCREENING"],
+    "available": true,
+    "shift_start": "08:00",
+    "shift_end": "16:00"
+  },
+  {
+    "crew_id": "CRW02",
+    "gang_name": "Flash Butt Welding Gang HPU",
+    "department": "ENGINEERING",
+    "base_station_id": "ST03",
+    "headcount": 8,
+    "lead_supervisor": "Rajesh Kumar (JE/Welding)",
+    "skills": ["RAIL_WELDING", "ULTRASONIC_TESTING", "RAIL_RENEWAL"],
+    "available": true,
+    "shift_start": "06:00",
+    "shift_end": "14:00"
+  },
+  {
+    "crew_id": "CRW03",
+    "gang_name": "Bridge Maintenance Squad GMS",
+    "department": "ENGINEERING",
+    "base_station_id": "ST04",
+    "headcount": 12,
+    "lead_supervisor": "Vipin Tyagi (SSE/Bridge)",
+    "skills": ["BRIDGE_INSPECTION", "BEARING_REPLACEMENT", "GIRDER_PAINTING"],
+    "available": true,
+    "shift_start": "09:00",
+    "shift_end": "17:00"
+  },
+  {
+    "crew_id": "CRW04",
+    "gang_name": "S&T Interlocking Maintenance Gang GZB",
+    "department": "SIGNALLING",
+    "base_station_id": "ST02",
+    "headcount": 6,
+    "lead_supervisor": "Sunil Verma (SSE/Signal)",
+    "skills": ["INTERLOCKING", "POINT_MACHINE_OVERHAUL", "CABLE_TESTING"],
+    "available": true,
+    "shift_start": "08:00",
+    "shift_end": "16:00"
+  },
+  {
+    "crew_id": "CRW05",
+    "gang_name": "Axle Counter & Track Circuit Gang MB",
+    "department": "SIGNALLING",
+    "base_station_id": "ST07",
+    "headcount": 5,
+    "lead_supervisor": "M. P. Singh (JE/Signal)",
+    "skills": ["AXLE_COUNTER", "TRACK_CIRCUIT", "BLOCK_INSTRUMENT"],
+    "available": true,
+    "shift_start": "07:00",
+    "shift_end": "15:00"
+  },
+  {
+    "crew_id": "CRW06",
+    "gang_name": "Electronic Interlocking Tech Team BE",
+    "department": "SIGNALLING",
+    "base_station_id": "ST09",
+    "headcount": 4,
+    "lead_supervisor": "Pankaj Saxena (SSE/Tele)",
+    "skills": ["ELECTRONIC_INTERLOCKING", "OFC_SPLICING", "DATA_NETWORKING"],
+    "available": true,
+    "shift_start": "10:00",
+    "shift_end": "18:00"
+  },
+  {
+    "crew_id": "CRW07",
+    "gang_name": "TRD OHE Tower Wagon Gang GZB",
+    "department": "ELECTRICAL",
+    "base_station_id": "ST02",
+    "headcount": 10,
+    "lead_supervisor": "D. C. Joshi (SSE/TRD)",
+    "skills": ["OHE_MAINTENANCE", "TOWER_WAGON", "CONTACT_WIRE_REGULATION"],
+    "available": true,
+    "shift_start": "08:00",
+    "shift_end": "16:00"
+  },
+  {
+    "crew_id": "CRW08",
+    "gang_name": "Substation High Voltage Gang GJL",
+    "department": "ELECTRICAL",
+    "base_station_id": "ST05",
+    "headcount": 7,
+    "lead_supervisor": "Ramesh Chandra (SSE/PSI)",
+    "skills": ["TRACTION_TRANSFORMER", "CIRCUIT_BREAKER", "POWER_BLOCK"],
+    "available": true,
+    "shift_start": "08:30",
+    "shift_end": "16:30"
+  },
+  {
+    "crew_id": "CRW09",
+    "gang_name": "TRD Catenary Inspection Gang MB",
+    "department": "ELECTRICAL",
+    "base_station_id": "ST07",
+    "headcount": 9,
+    "lead_supervisor": "Harish Rawat (JE/TRD)",
+    "skills": ["CATENARY_INSPECTION", "ISOLATOR_OVERHAUL", "BONDING"],
+    "available": true,
+    "shift_start": "06:00",
+    "shift_end": "14:00"
+  },
+  {
+    "crew_id": "CRW10",
+    "gang_name": "Emergency Rapid Possession Gang BE",
+    "department": "ENGINEERING",
+    "base_station_id": "ST09",
+    "headcount": 16,
+    "lead_supervisor": "Santosh Yadav (ADEN/Track)",
+    "skills": ["EMERGENCY_RESTORATION", "RAIL_FRACTURE_REPAIR", "DERAILMENT_RESTORE"],
+    "available": true,
+    "shift_start": "00:00",
+    "shift_end": "23:59"
+  }
+]

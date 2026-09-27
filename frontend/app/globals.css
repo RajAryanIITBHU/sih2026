@@ -1,0 +1,366 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ─────────────────────────────────────────────
+     CORE
+  ───────────────────────────────────────────── */
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+
+  /* ─────────────────────────────────────────────
+     SURFACES
+  ───────────────────────────────────────────── */
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+
+  /* ─────────────────────────────────────────────
+     BRAND / PRIMARY
+  ───────────────────────────────────────────── */
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* ─────────────────────────────────────────────
+     STATUS
+  ───────────────────────────────────────────── */
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  /* ─────────────────────────────────────────────
+     AI
+  ───────────────────────────────────────────── */
+
+  --color-ai: var(--ai);
+  --color-ai-foreground: var(--ai-foreground);
+  --color-ai-muted: var(--ai-muted);
+
+  /* ─────────────────────────────────────────────
+     UI
+  ───────────────────────────────────────────── */
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* ─────────────────────────────────────────────
+     CHARTS
+  ───────────────────────────────────────────── */
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* ─────────────────────────────────────────────
+     SIDEBAR
+  ───────────────────────────────────────────── */
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ─────────────────────────────────────────────
+     RADIUS
+  ───────────────────────────────────────────── */
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+
+/* =================================================
+   RAILMAINT AI — LIGHT THEME
+   ================================================= */
+
+:root {
+
+  /* ─────────────────────────────────────────────
+     BACKGROUND
+  ───────────────────────────────────────────── */
+
+  --background: #f7f9f7;
+  --foreground: #0b0b0b;
+
+  /* ─────────────────────────────────────────────
+     CARDS / SURFACES
+  ───────────────────────────────────────────── */
+
+  --card: #ffffff;
+  --card-foreground: #0b0b0b;
+
+  --popover: #ffffff;
+  --popover-foreground: #0b0b0b;
+
+  --surface: #ffffff;
+  --surface-muted: #f1f4f2;
+
+  /* ─────────────────────────────────────────────
+     PRIMARY — RAILWAY FOREST GREEN
+  ───────────────────────────────────────────── */
+
+  --primary: #176b43;
+  --primary-foreground: #ffffff;
+
+  /* ─────────────────────────────────────────────
+     SECONDARY
+  ───────────────────────────────────────────── */
+
+  --secondary: #edf3ef;
+  --secondary-foreground: #205638;
+
+  /* ─────────────────────────────────────────────
+     ACCENT
+  ───────────────────────────────────────────── */
+
+  --accent: #e8f3eb;
+  --accent-foreground: #176b43;
+
+  /* ─────────────────────────────────────────────
+     MUTED
+  ───────────────────────────────────────────── */
+
+  --muted: #f1f4f2;
+  --muted-foreground: #68736c;
+
+  /* ─────────────────────────────────────────────
+     BORDERS / INPUTS
+  ───────────────────────────────────────────── */
+
+  --border: #e2e8e4;
+  --input: #dce4df;
+
+  --ring: #4f9f6b;
+
+  /* ─────────────────────────────────────────────
+     SUCCESS
+  ───────────────────────────────────────────── */
+
+  --success: #4caf68;
+  --success-foreground: #ffffff;
+
+  /* ─────────────────────────────────────────────
+     WARNING
+  ───────────────────────────────────────────── */
+
+  --warning: #e9b949;
+  --warning-foreground: #513b08;
+
+  /* ─────────────────────────────────────────────
+     INFO
+  ───────────────────────────────────────────── */
+
+  --info: #5b9bd5;
+  --info-foreground: #ffffff;
+
+  /* ─────────────────────────────────────────────
+     DESTRUCTIVE / CRITICAL
+  ───────────────────────────────────────────── */
+
+  --destructive: #e05252;
+  --destructive-foreground: #ffffff;
+
+  /* ─────────────────────────────────────────────
+     AI
+  ───────────────────────────────────────────── */
+
+  --ai: #237a50;
+  --ai-foreground: #ffffff;
+  --ai-muted: #e7f4eb;
+
+  /* ─────────────────────────────────────────────
+     CHART COLORS
+     
+     1 = Forest Green
+     2 = Light Green
+     3 = Amber
+     4 = Orange
+     5 = Blue
+  ───────────────────────────────────────────── */
+
+  --chart-1: #4caf68;
+  --chart-2: #8acb78;
+  --chart-3: #e9b949;
+  --chart-4: #f28c45;
+  --chart-5: #5b9bd5;
+
+  /* ─────────────────────────────────────────────
+     SIDEBAR
+  ───────────────────────────────────────────── */
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0b0b0b;
+
+  --sidebar-primary: #176b43;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #edf3ef;
+  --sidebar-accent-foreground: #176b43;
+
+  --sidebar-border: #e5ebe7;
+  --sidebar-ring: #4f9f6b;
+
+  /* ─────────────────────────────────────────────
+     RADIUS
+  ───────────────────────────────────────────── */
+
+  --radius: 0.75rem;
+}
+
+
+/* =================================================
+   RAILMAINT AI — DARK THEME
+   ================================================= */
+
+.dark {
+
+  --background: #101713;
+  --foreground: #edf4ef;
+
+  --card: #1c2b1d;
+  --card-foreground: #edf4ef;
+
+  --popover: #0b0b0b;
+  --popover-foreground: #edf4ef;
+
+  --surface: #0b0b0b;
+  --surface-muted: #1d2821;
+
+  /* Primary */
+
+  --primary: #63bd7c;
+  --primary-foreground: #0e1b13;
+
+  /* Secondary */
+
+  --secondary: #203027;
+  --secondary-foreground: #dcebe1;
+
+  /* Accent */
+
+  --accent: #20392a;
+  --accent-foreground: #7bd292;
+
+  /* Muted */
+
+  --muted: #202b24;
+  --muted-foreground: #9ca9a1;
+
+  /* Borders */
+
+  --border: #2a382f;
+  --input: #304036;
+
+  --ring: #63bd7c;
+
+  /* Status */
+
+  --success: #63bd7c;
+  --success-foreground: #0e1b13;
+
+  --warning: #edc15a;
+  --warning-foreground: #392c08;
+
+  --info: #69a9df;
+  --info-foreground: #0c1b2b;
+
+  --destructive: #ed6868;
+  --destructive-foreground: #2b0b0b;
+
+  /* AI */
+
+  --ai: #63bd7c;
+  --ai-foreground: #0e1b13;
+  --ai-muted: #1d3826;
+
+  /* Charts */
+
+  --chart-1: #63bd7c;
+  --chart-2: #91d67d;
+  --chart-3: #edc15a;
+  --chart-4: #f29a5c;
+  --chart-5: #69a9df;
+
+  /* Sidebar */
+
+  --sidebar: #131c17;
+  --sidebar-foreground: #edf4ef;
+
+  --sidebar-primary: #63bd7c;
+  --sidebar-primary-foreground: #0e1b13;
+
+  --sidebar-accent: #203027;
+  --sidebar-accent-foreground: #7bd292;
+
+  --sidebar-border: #28352d;
+  --sidebar-ring: #63bd7c;
+}
+
+
+/* =================================================
+   BASE
+   ================================================= */
+
+@layer base {
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+}

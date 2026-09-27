@@ -1,0 +1,122 @@
+[
+  {
+    "track_id": "TRK01",
+    "from_station_id": "ST01",
+    "to_station_id": "ST02",
+    "name": "NDLS-GZB Main Line UP",
+    "length_km": 25.6,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 130,
+    "electrification": "25kV AC",
+    "criticality": 0.95,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK02",
+    "from_station_id": "ST02",
+    "to_station_id": "ST03",
+    "name": "GZB-HPU Section UP",
+    "length_km": 36.8,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 110,
+    "electrification": "25kV AC",
+    "criticality": 0.85,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK03",
+    "from_station_id": "ST03",
+    "to_station_id": "ST04",
+    "name": "HPU-GMS Section UP",
+    "length_km": 25.8,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 110,
+    "electrification": "25kV AC",
+    "criticality": 0.75,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK04",
+    "from_station_id": "ST04",
+    "to_station_id": "ST05",
+    "name": "GMS-GJL Ganga Bridge Section",
+    "length_km": 20.9,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 100,
+    "electrification": "25kV AC",
+    "criticality": 0.90,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK05",
+    "from_station_id": "ST05",
+    "to_station_id": "ST06",
+    "name": "GJL-AMRO Section UP",
+    "length_km": 23.2,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 110,
+    "electrification": "25kV AC",
+    "criticality": 0.70,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK06",
+    "from_station_id": "ST06",
+    "to_station_id": "ST07",
+    "name": "AMRO-MB Approach UP",
+    "length_km": 30.5,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 110,
+    "electrification": "25kV AC",
+    "criticality": 0.90,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK07",
+    "from_station_id": "ST07",
+    "to_station_id": "ST08",
+    "name": "MB-RMU Section UP",
+    "length_km": 27.1,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 120,
+    "electrification": "25kV AC",
+    "criticality": 0.85,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK08",
+    "from_station_id": "ST08",
+    "to_station_id": "ST09",
+    "name": "RMU-BE Section UP",
+    "length_km": 63.3,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 120,
+    "electrification": "25kV AC",
+    "criticality": 0.92,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK09",
+    "from_station_id": "ST09",
+    "to_station_id": "ST10",
+    "name": "BE-SPN Section UP",
+    "length_km": 78.3,
+    "track_type": "DOUBLE_ELECTRIFIED",
+    "max_speed_kmh": 120,
+    "electrification": "25kV AC",
+    "criticality": 0.80,
+    "status": "ACTIVE"
+  },
+  {
+    "track_id": "TRK10",
+    "from_station_id": "ST02",
+    "to_station_id": "ST07",
+    "name": "GZB-MB Freight Bypass Loop",
+    "length_km": 137.2,
+    "track_type": "SINGLE_ELECTRIFIED",
+    "max_speed_kmh": 85,
+    "electrification": "25kV AC",
+    "criticality": 0.78,
+    "status": "ACTIVE"
+  }
+]

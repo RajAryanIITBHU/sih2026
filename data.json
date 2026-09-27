@@ -1,0 +1,2155 @@
+{
+    "success": true,
+    "data": {
+        "fromStation": {
+            "code": "BSB",
+            "name": "Varanasi Jn"
+        },
+        "toStation": {
+            "code": "LKO",
+            "name": "Lucknow Jn"
+        },
+        "totalTrains": 61,
+        "trainTypeFilter": null,
+        "trains": [
+            {
+                "number": "14261",
+                "name": "Ekatmata Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "wed",
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "00:15",
+                    "arrivalTime": "05:05",
+                    "travelTime": "04:50"
+                }
+            },
+            {
+                "number": "22317",
+                "name": "Sealdah - Jammu Tawi Humsafar Express",
+                "type": "Humsafar Express",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "00:20",
+                    "arrivalTime": "06:05",
+                    "travelTime": "05:45"
+                }
+            },
+            {
+                "number": "22355",
+                "name": "Chandigarh SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "wed",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "01:15",
+                    "arrivalTime": "06:05",
+                    "travelTime": "04:50"
+                }
+            },
+            {
+                "number": "20503",
+                "name": "Dibrugarh - New Delhi Rajdhani Express",
+                "type": "Rajdhani Express",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "wed",
+                    "thu",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "01:40",
+                    "arrivalTime": "05:45",
+                    "travelTime": "04:05"
+                }
+            },
+            {
+                "number": "20505",
+                "name": "Dibrugarh - New Delhi Rajdhani Express",
+                "type": "Rajdhani Express",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "01:40",
+                    "arrivalTime": "05:45",
+                    "travelTime": "04:05"
+                }
+            },
+            {
+                "number": "13035",
+                "name": "Upasana Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "01:55",
+                    "arrivalTime": "07:20",
+                    "travelTime": "05:25"
+                }
+            },
+            {
+                "number": "13037",
+                "name": "Kumbh Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "wed",
+                    "thu",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "01:55",
+                    "arrivalTime": "07:20",
+                    "travelTime": "05:25"
+                }
+            },
+            {
+                "number": "13151",
+                "name": "Jammu Tawi Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "02:55",
+                    "arrivalTime": "11:15",
+                    "travelTime": "08:20"
+                }
+            },
+            {
+                "number": "19670",
+                "name": "Patliputra - Udaipur City Humsafar Express",
+                "type": "Humsafar Express",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "05:05",
+                    "arrivalTime": "12:00",
+                    "travelTime": "06:55"
+                }
+            },
+            {
+                "number": "19306",
+                "name": "Dr. Ambedkar Nagar Weekly Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "05:10",
+                    "arrivalTime": "12:00",
+                    "travelTime": "06:50"
+                }
+            },
+            {
+                "number": "13307",
+                "name": "Ganga Sutlej Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "05:30",
+                    "arrivalTime": "14:45",
+                    "travelTime": "09:15"
+                }
+            },
+            {
+                "number": "20401",
+                "name": "Lucknow SF Shuttle Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "05:40",
+                    "arrivalTime": "10:10",
+                    "travelTime": "04:30"
+                }
+            },
+            {
+                "number": "14225",
+                "name": "Lucknow Intercity Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "06:20",
+                    "arrivalTime": "12:20",
+                    "travelTime": "06:00"
+                }
+            },
+            {
+                "number": "14021",
+                "name": "Anand Vihar Terminal Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "07:15",
+                    "arrivalTime": "13:05",
+                    "travelTime": "05:50"
+                }
+            },
+            {
+                "number": "12875",
+                "name": "Neelachal Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "fri",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "07:30",
+                    "arrivalTime": "13:25",
+                    "travelTime": "05:55"
+                }
+            },
+            {
+                "number": "18103",
+                "name": "Amritsar Jallianwala Bagh Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "wed"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "08:10",
+                    "arrivalTime": "15:00",
+                    "travelTime": "06:50"
+                }
+            },
+            {
+                "number": "22489",
+                "name": "Varanasi - Meerut City Vande Bharat Express",
+                "type": "Vande Bharat Express",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "09:10",
+                    "arrivalTime": "13:40",
+                    "travelTime": "04:30"
+                }
+            },
+            {
+                "number": "13005",
+                "name": "Amritsar Mail",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "09:25",
+                    "arrivalTime": "15:20",
+                    "travelTime": "05:55"
+                }
+            },
+            {
+                "number": "15636",
+                "name": "Okha Dwarka Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "10:10",
+                    "arrivalTime": "16:50",
+                    "travelTime": "06:40"
+                }
+            },
+            {
+                "number": "15668",
+                "name": "Gandhidham Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "wed"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "10:10",
+                    "arrivalTime": "16:50",
+                    "travelTime": "06:40"
+                }
+            },
+            {
+                "number": "13009",
+                "name": "Doon Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "11:10",
+                    "arrivalTime": "20:25",
+                    "travelTime": "09:15"
+                }
+            },
+            {
+                "number": "15733",
+                "name": "Farakka Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "thu",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "11:25",
+                    "arrivalTime": "18:45",
+                    "travelTime": "07:20"
+                }
+            },
+            {
+                "number": "15743",
+                "name": "Farakka Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "wed",
+                    "fri",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "11:25",
+                    "arrivalTime": "18:45",
+                    "travelTime": "07:20"
+                }
+            },
+            {
+                "number": "12355",
+                "name": "Archana Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "11:40",
+                    "arrivalTime": "17:15",
+                    "travelTime": "05:35"
+                }
+            },
+            {
+                "number": "14007",
+                "name": "Anand Vihar Terminal Sadbhavana Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "wed",
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "11:45",
+                    "arrivalTime": "18:05",
+                    "travelTime": "06:20"
+                }
+            },
+            {
+                "number": "14015",
+                "name": "Anand Vihar Terminal Sadbhavana Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "11:45",
+                    "arrivalTime": "18:05",
+                    "travelTime": "06:20"
+                }
+            },
+            {
+                "number": "14017",
+                "name": "Anand Vihar Terminal Sadbhavana Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "thu"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "11:45",
+                    "arrivalTime": "18:05",
+                    "travelTime": "06:20"
+                }
+            },
+            {
+                "number": "13065",
+                "name": "Howrah - Anand Vihar Terminal Amrit Bharat Express",
+                "type": "Amrit Bharat Express",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "thu"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "12:00",
+                    "arrivalTime": "16:50",
+                    "travelTime": "04:50"
+                }
+            },
+            {
+                "number": "12237",
+                "name": "Begampura Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "12:40",
+                    "arrivalTime": "17:30",
+                    "travelTime": "04:50"
+                }
+            },
+            {
+                "number": "20413",
+                "name": "Kashi Mahakal SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "thu"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "14:00",
+                    "arrivalTime": "19:05",
+                    "travelTime": "05:05"
+                }
+            },
+            {
+                "number": "19168",
+                "name": "Sabarmati Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "thu",
+                    "fri",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "14:25",
+                    "arrivalTime": "23:00",
+                    "travelTime": "08:35"
+                }
+            },
+            {
+                "number": "13041",
+                "name": "Himgiri Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "fri",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "14:48",
+                    "arrivalTime": "19:20",
+                    "travelTime": "04:32"
+                }
+            },
+            {
+                "number": "12391",
+                "name": "Shramjeevi SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "15:15",
+                    "arrivalTime": "19:55",
+                    "travelTime": "04:40"
+                }
+            },
+            {
+                "number": "20964",
+                "name": "Sabarmati Weekly SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "15:35",
+                    "arrivalTime": "21:00",
+                    "travelTime": "05:25"
+                }
+            },
+            {
+                "number": "04217",
+                "name": "Varanasi - New Delhi Special",
+                "type": "MAIL/EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "15:40",
+                    "arrivalTime": "21:05",
+                    "travelTime": "05:25"
+                }
+            },
+            {
+                "number": "14523",
+                "name": "Harihar Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "thu"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "15:40",
+                    "arrivalTime": "21:00",
+                    "travelTime": "05:20"
+                }
+            },
+            {
+                "number": "19314",
+                "name": "Patna - Indore Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "wed",
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "16:00",
+                    "arrivalTime": "22:40",
+                    "travelTime": "06:40"
+                }
+            },
+            {
+                "number": "19322",
+                "name": "Patna - Indore Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "16:00",
+                    "arrivalTime": "22:40",
+                    "travelTime": "06:40"
+                }
+            },
+            {
+                "number": "13237",
+                "name": "Patna - Kota Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "16:35",
+                    "arrivalTime": "23:10",
+                    "travelTime": "06:35"
+                }
+            },
+            {
+                "number": "13239",
+                "name": "Patna - Kota Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "wed",
+                    "thu",
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "16:35",
+                    "arrivalTime": "23:10",
+                    "travelTime": "06:35"
+                }
+            },
+            {
+                "number": "14853",
+                "name": "Marudhar Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "wed",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "17:10",
+                    "arrivalTime": "00:00",
+                    "travelTime": "06:50"
+                }
+            },
+            {
+                "number": "14863",
+                "name": "Marudhar Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "fri",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "17:10",
+                    "arrivalTime": "00:00",
+                    "travelTime": "06:50"
+                }
+            },
+            {
+                "number": "14865",
+                "name": "Marudhar Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "thu"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "17:10",
+                    "arrivalTime": "00:00",
+                    "travelTime": "06:50"
+                }
+            },
+            {
+                "number": "24203",
+                "name": "Lucknow Intercity SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "17:50",
+                    "arrivalTime": "22:50",
+                    "travelTime": "05:00"
+                }
+            },
+            {
+                "number": "22417",
+                "name": "New Delhi Mahamana Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "thu",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "18:55",
+                    "arrivalTime": "23:45",
+                    "travelTime": "04:50"
+                }
+            },
+            {
+                "number": "12353",
+                "name": "Lal Kuan Weekly SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "19:10",
+                    "arrivalTime": "00:55",
+                    "travelTime": "05:45"
+                }
+            },
+            {
+                "number": "12371",
+                "name": "Bikaner Weekly SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "19:10",
+                    "arrivalTime": "00:55",
+                    "travelTime": "05:45"
+                }
+            },
+            {
+                "number": "15624",
+                "name": "Bhagat ki Kothi Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "19:10",
+                    "arrivalTime": "00:55",
+                    "travelTime": "05:45"
+                }
+            },
+            {
+                "number": "14623",
+                "name": "Seer Govardhanpur Varanasi Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "thu",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "19:50",
+                    "arrivalTime": "00:01",
+                    "travelTime": "04:11"
+                }
+            },
+            {
+                "number": "04011",
+                "name": "Varanasi - Delhi Special",
+                "type": "TRAIN ON DEMAND",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "19:50",
+                    "arrivalTime": "00:01",
+                    "travelTime": "04:11"
+                }
+            },
+            {
+                "number": "13257",
+                "name": "Anand Vihar Terminal Jan Sadharan Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "20:00",
+                    "arrivalTime": "01:50",
+                    "travelTime": "05:50"
+                }
+            },
+            {
+                "number": "04445",
+                "name": "Varanasi - Delhi Special",
+                "type": "MAIL/EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "20:15",
+                    "arrivalTime": "02:10",
+                    "travelTime": "05:55"
+                }
+            },
+            {
+                "number": "12317",
+                "name": "Akal Takht Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "wed",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "20:40",
+                    "arrivalTime": "02:30",
+                    "travelTime": "05:50"
+                }
+            },
+            {
+                "number": "12325",
+                "name": "Gurumukhi SF Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "thu"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "20:40",
+                    "arrivalTime": "02:30",
+                    "travelTime": "05:50"
+                }
+            },
+            {
+                "number": "12357",
+                "name": "Durgiana Express",
+                "type": "SUPERFAST",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "22:15",
+                    "arrivalTime": "02:30",
+                    "travelTime": "04:15"
+                }
+            },
+            {
+                "number": "15933",
+                "name": "Amritsar Express",
+                "type": "Mail/Express",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "22:20",
+                    "arrivalTime": "05:55",
+                    "travelTime": "07:35"
+                }
+            },
+            {
+                "number": "13167",
+                "name": "Agra Cantt. Weekly Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "thu"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "23:00",
+                    "arrivalTime": "05:25",
+                    "travelTime": "06:25"
+                }
+            },
+            {
+                "number": "14235",
+                "name": "Bareilly Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "mon",
+                    "tue",
+                    "wed",
+                    "thu",
+                    "fri",
+                    "sat",
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "23:05",
+                    "arrivalTime": "06:38",
+                    "travelTime": "07:33"
+                }
+            },
+            {
+                "number": "14259",
+                "name": "Ekatmata Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "sun"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "23:50",
+                    "arrivalTime": "05:30",
+                    "travelTime": "05:40"
+                }
+            },
+            {
+                "number": "13429",
+                "name": "Anand Vihar Terminal Weekly Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "fri"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "23:55",
+                    "arrivalTime": "06:05",
+                    "travelTime": "06:10"
+                }
+            },
+            {
+                "number": "14003",
+                "name": "New Delhi Express",
+                "type": "MAIL EXPRESS",
+                "nameHindi": null,
+                "typeDescription": null,
+                "typeDescriptionHindi": null,
+                "source": {
+                    "code": "BSB",
+                    "name": "Varanasi Jn"
+                },
+                "destination": {
+                    "code": "LKO",
+                    "name": "Lucknow Jn"
+                },
+                "runDays": [
+                    "tue",
+                    "sat"
+                ],
+                "availableClasses": [],
+                "journeySegment": {
+                    "from": {
+                        "code": "BSB",
+                        "name": "Varanasi Jn"
+                    },
+                    "to": {
+                        "code": "LKO",
+                        "name": "Lucknow Jn"
+                    },
+                    "departureTime": "23:55",
+                    "arrivalTime": "06:05",
+                    "travelTime": "06:10"
+                }
+            }
+        ]
+    },
+    "meta": {
+        "timestamp": "2026-09-09T16:05:59+05:30",
+        "traceId": "e6fbc390-6711-4d7c-b628-1e1e19250028",
+        "source": "database",
+        "executionTime": 185
+    }
+}

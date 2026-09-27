@@ -1,0 +1,122 @@
+[
+  {
+    "weather_id": "WTH001",
+    "station_id": "ST01",
+    "station_code": "NDLS",
+    "temperature_c": 33.5,
+    "rainfall_mm": 2.0,
+    "wind_speed_kmh": 14.0,
+    "visibility_km": 6.5,
+    "condition": "PARTLY_CLOUDY",
+    "track_risk_factor": 1.0,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH002",
+    "station_id": "ST02",
+    "station_code": "GZB",
+    "temperature_c": 32.0,
+    "rainfall_mm": 5.4,
+    "wind_speed_kmh": 18.2,
+    "visibility_km": 5.0,
+    "condition": "LIGHT_RAIN",
+    "track_risk_factor": 1.1,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH003",
+    "station_id": "ST03",
+    "station_code": "HPU",
+    "temperature_c": 29.8,
+    "rainfall_mm": 18.6,
+    "wind_speed_kmh": 28.5,
+    "visibility_km": 3.2,
+    "condition": "MODERATE_RAIN",
+    "track_risk_factor": 1.3,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH004",
+    "station_id": "ST04",
+    "station_code": "GMS",
+    "temperature_c": 26.5,
+    "rainfall_mm": 45.2,
+    "wind_speed_kmh": 52.0,
+    "visibility_km": 1.5,
+    "condition": "HEAVY_RAIN_STORM",
+    "track_risk_factor": 1.8,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH005",
+    "station_id": "ST05",
+    "station_code": "GJL",
+    "temperature_c": 27.0,
+    "rainfall_mm": 38.0,
+    "wind_speed_kmh": 44.0,
+    "visibility_km": 2.0,
+    "condition": "HEAVY_RAIN",
+    "track_risk_factor": 1.6,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH006",
+    "station_id": "ST06",
+    "station_code": "AMRO",
+    "temperature_c": 28.4,
+    "rainfall_mm": 12.0,
+    "wind_speed_kmh": 22.0,
+    "visibility_km": 4.5,
+    "condition": "LIGHT_RAIN",
+    "track_risk_factor": 1.2,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH007",
+    "station_id": "ST07",
+    "station_code": "MB",
+    "temperature_c": 30.1,
+    "rainfall_mm": 4.2,
+    "wind_speed_kmh": 16.0,
+    "visibility_km": 6.0,
+    "condition": "OVERCAST",
+    "track_risk_factor": 1.0,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH008",
+    "station_id": "ST08",
+    "station_code": "RMU",
+    "temperature_c": 31.0,
+    "rainfall_mm": 1.5,
+    "wind_speed_kmh": 12.0,
+    "visibility_km": 7.0,
+    "condition": "CLOUDY",
+    "track_risk_factor": 1.0,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH009",
+    "station_id": "ST09",
+    "station_code": "BE",
+    "temperature_c": 32.2,
+    "rainfall_mm": 0.0,
+    "wind_speed_kmh": 10.5,
+    "visibility_km": 8.0,
+    "condition": "CLEAR",
+    "track_risk_factor": 1.0,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  },
+  {
+    "weather_id": "WTH010",
+    "station_id": "ST10",
+    "station_code": "SPN",
+    "temperature_c": 33.0,
+    "rainfall_mm": 0.0,
+    "wind_speed_kmh": 9.0,
+    "visibility_km": 8.5,
+    "condition": "CLEAR",
+    "track_risk_factor": 1.0,
+    "recorded_at": "2026-09-09T10:00:00Z"
+  }
+]

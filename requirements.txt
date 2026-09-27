@@ -1,0 +1,10 @@
+fastapi>=0.141.1
+uvicorn[standard]>=0.52.4
+pydantic>=2.13.5
+pydantic-settings>=2.15.0
+psycopg2-binary>=2.9.12
+ortools>=9.15.6755
+kafka-python>=3.0.11
+python-dotenv>=1.2.3
+requests>=2.34.2
+httpx>=0.28.1
