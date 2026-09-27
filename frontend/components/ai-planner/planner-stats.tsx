@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Check, Clock3, Sparkles, TrainFront, Users } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { DashboardStatCard } from "@/components/dashboard/dashboard-stat-card";
 import type { PlannerStatsView } from "./types";
 
 export interface StatCardProps {
@@ -10,6 +10,7 @@ export interface StatCardProps {
   value: string;
   label: string;
   iconClass?: string;
+  className?: string;
 }
 
 export function StatCard({
@@ -17,22 +18,16 @@ export function StatCard({
   value,
   label,
   iconClass = "bg-primary/10 text-primary",
+  className,
 }: StatCardProps) {
   return (
-    <Card className="rounded-lg border shadow-none">
-      <CardContent className="flex items-center gap-3 p-3">
-        <div
-          className={`flex size-8 shrink-0 items-center justify-center rounded-md ${iconClass}`}
-        >
-          {icon}
-        </div>
-
-        <div>
-          <p className="text-sm font-bold leading-none">{value}</p>
-          <p className="mt-1 text-[9px] text-muted-foreground">{label}</p>
-        </div>
-      </CardContent>
-    </Card>
+    <DashboardStatCard
+      title={label}
+      value={value}
+      icon={icon}
+      iconClassName={iconClass}
+      className={className}
+    />
   );
 }
 
@@ -48,40 +43,46 @@ export function PlannerStatsBar({ stats }: PlannerStatsBarProps) {
   const scoreValue = stats ? `${stats.optimizationScore} / 100` : "94 / 100";
 
   return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-5">
-      <StatCard
-        icon={<Check className="size-4" />}
+    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-[1fr_1fr_1.45fr_1fr_1.1fr]">
+      <DashboardStatCard
+        title="Selected Tasks"
         value={selectedTasksValue}
-        label="Selected Tasks"
-        iconClass="bg-emerald-500/10 text-emerald-600"
+        icon={<Check className="size-4" />}
+        iconClassName="bg-emerald-500/10 text-emerald-600"
+        variant="success"
       />
 
-      <StatCard
-        icon={<Users className="size-4" />}
+      <DashboardStatCard
+        title="Departments"
         value={departmentsValue}
-        label="Departments"
-        iconClass="bg-sky-500/10 text-sky-600"
+        icon={<Users className="size-4" />}
+        iconClassName="bg-sky-500/10 text-sky-600"
+        variant="primary"
       />
 
-      <StatCard
-        icon={<Clock3 className="size-4" />}
+      {/* Increased width Recommended Block Status Card with single-line typography */}
+      <DashboardStatCard
+        title="Recommended Block"
         value={recommendedBlockValue}
-        label="Recommended Block"
-        iconClass="bg-emerald-500/10 text-emerald-600"
+        icon={<Clock3 className="size-4" />}
+        iconClassName="bg-emerald-500/10 text-emerald-600"
+        variant="success"
+        className="col-span-2 sm:col-span-1 xl:col-span-1 [&_p.text-foreground]:whitespace-nowrap [&_p.text-foreground]:text-lg sm:[&_p.text-foreground]:text-xl xl:[&_p.text-foreground]:text-2xl [&_p.text-muted-foreground]:whitespace-nowrap"
       />
 
-      <StatCard
-        icon={<TrainFront className="size-4" />}
+      <DashboardStatCard
+        title="Train Conflicts"
         value={trainConflictsValue}
-        label="Train Conflicts"
-        iconClass="bg-muted text-muted-foreground"
+        icon={<TrainFront className="size-4" />}
+        iconClassName="bg-muted text-muted-foreground"
       />
 
-      <StatCard
-        icon={<Sparkles className="size-4" />}
+      <DashboardStatCard
+        title="Optimization Score"
         value={scoreValue}
-        label="Optimization Score"
-        iconClass="bg-amber-500/10 text-amber-600"
+        icon={<Sparkles className="size-4" />}
+        iconClassName="bg-amber-500/10 text-amber-600"
+        variant="warning"
       />
     </div>
   );

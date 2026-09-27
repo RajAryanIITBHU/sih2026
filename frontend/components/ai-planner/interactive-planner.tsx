@@ -1,17 +1,25 @@
 "use client";
 
 import * as React from "react";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { DashboardSectionHeader } from "@/components/dashboard/dashboard-section-header";
 import { PlannerStatsBar } from "./planner-stats";
 import { TaskListPanel } from "./task-list-panel";
 import { BlockSchedule } from "./block-schedule";
 import { OptimizationResult } from "./optimization-result";
+import { TrafficForecastChart } from "./traffic-forecast-chart";
+import { AvailableBlocks } from "./available-blocks";
+import { ResourceAvailability } from "./resource-availability";
 import {
   mapDepartmentToRow,
+  type AvailableBlockItemView,
   type OptimizationResultView,
   type PlannerStatsView,
   type PlannerTaskView,
   type RecommendedBlockView,
+  type ResourceAvailabilityItemView,
   type ScheduleTaskView,
+  type TrafficForecastDataView,
 } from "./types";
 
 export interface InteractivePlannerProps {
@@ -21,11 +29,14 @@ export interface InteractivePlannerProps {
   initialOptimizationResult: OptimizationResultView;
   recommendedBlock: RecommendedBlockView;
   corridorCode: string;
+  availableBlocks?: AvailableBlockItemView[];
+  resourceAvailability?: ResourceAvailabilityItemView[];
+  trafficForecast?: TrafficForecastDataView;
 }
 
 /**
  * Dynamically allocate schedule task blocks on the timeline for a specific department row.
- * Selected tasks are placed within the recommended block possession window as defined in SCHEMA.md.
+ * Selected tasks are placed within the active block possession window.
  */
 function scheduleRowTasks(
   rowTasks: PlannerTaskView[],
@@ -105,16 +116,34 @@ export function InteractivePlanner({
   initialOptimizationResult,
   recommendedBlock,
   corridorCode,
+  availableBlocks,
+  resourceAvailability,
+  trafficForecast,
 }: InteractivePlannerProps) {
   const [tasks, setTasks] = React.useState<PlannerTaskView[]>(initialTasks);
+  const [activeBlock, setActiveBlock] = React.useState<RecommendedBlockView>(recommendedBlock);
 
-  // Synchronize when initialTasks changes (e.g. corridor selection change)
+  // Synchronize when initialTasks or recommendedBlock changes (e.g. corridor selection change)
   React.useEffect(() => {
     setTasks(initialTasks);
   }, [initialTasks]);
 
+  React.useEffect(() => {
+    setActiveBlock(recommendedBlock);
+  }, [recommendedBlock]);
+
   const handleTasksChange = (updatedTasks: PlannerTaskView[]) => {
     setTasks(updatedTasks);
+  };
+
+  const handleSelectBlockWindow = (block: AvailableBlockItemView) => {
+    setActiveBlock((prev) => ({
+      ...prev,
+      startHour: block.startHour,
+      endHour: block.endHour,
+      timeRangeFormatted: block.time,
+      durationFormatted: `${block.endHour - block.startHour} hours`,
+    }));
   };
 
   // Derived selected tasks
@@ -128,10 +157,10 @@ export function InteractivePlanner({
     return new Set(selectedTasks.map((t) => t.department));
   }, [selectedTasks]);
 
-  // Compute dynamic schedule tasks directly from current task selection
+  // Compute dynamic schedule tasks directly from current task selection & active block window
   const dynamicScheduleTasks = React.useMemo(() => {
-    const recStart = recommendedBlock.startHour;
-    const recEnd = recommendedBlock.endHour;
+    const recStart = activeBlock.startHour;
+    const recEnd = activeBlock.endHour;
 
     const engSelected = tasks.filter(
       (t) => t.selected && mapDepartmentToRow(t.departmentCode) === "engineering"
@@ -166,43 +195,80 @@ export function InteractivePlanner({
       ...scheduleRowTasks(elecSelected, "electrical", recStart, recEnd, conflictingElec),
       ...scheduleRowTasks(sntSelected, "snt", recStart, recEnd, conflictingSnt),
     ];
-  }, [tasks, recommendedBlock, selectedTasks.length, initialScheduleTasks]);
+  }, [tasks, activeBlock, selectedTasks.length, initialScheduleTasks]);
 
-  // Dynamic statistics
+  // Dynamic statistics reflecting selected window and task count
   const dynamicStats = React.useMemo<PlannerStatsView>(() => {
     return {
       ...initialStats,
       selectedTasksCount: selectedCount,
       departmentsCount: selectedDepts.size,
+      recommendedBlock: activeBlock.timeRangeFormatted,
     };
-  }, [initialStats, selectedCount, selectedDepts.size]);
+  }, [initialStats, selectedCount, selectedDepts.size, activeBlock.timeRangeFormatted]);
 
   // Dynamic optimization result
   const dynamicOptimizationResult = React.useMemo<OptimizationResultView>(() => {
     return {
       ...initialOptimizationResult,
+      recommendedBlock: activeBlock,
       tasksScheduledCount: selectedCount,
       departmentsCount: selectedDepts.size,
     };
-  }, [initialOptimizationResult, selectedCount, selectedDepts.size]);
+  }, [initialOptimizationResult, activeBlock, selectedCount, selectedDepts.size]);
 
   return (
-    <>
-      {/* Statistics */}
-      <PlannerStatsBar stats={dynamicStats} />
+    <TooltipProvider delay={150}>
+      <div className="space-y-4">
+        {/* Statistics Bar */}
+        <PlannerStatsBar stats={dynamicStats} />
 
-      {/* Main Planner */}
-      <div className="grid grid-cols-1 gap-3 xl:grid-cols-[180px_minmax(0,1fr)_200px]">
-        <TaskListPanel tasks={tasks} onTasksChange={handleTasksChange} />
+        {/* 2-Column AI Planner Grid: Increased width TaskListPanel (330px-360px) + Expansive BlockSchedule */}
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-[310px_minmax(0,1fr)] xl:grid-cols-[340px_minmax(0,1fr)]">
+          <TaskListPanel tasks={tasks} onTasksChange={handleTasksChange} />
 
-        <BlockSchedule
-          corridorCode={corridorCode}
-          scheduleTasks={dynamicScheduleTasks}
-          recommendedBlock={recommendedBlock}
-        />
+          <BlockSchedule
+            corridorCode={corridorCode}
+            scheduleTasks={dynamicScheduleTasks}
+            recommendedBlock={activeBlock}
+          />
+        </div>
 
+        {/* AI Optimization Result in Landscape Row Layout below Maintenance Tasks and Block Schedule */}
         <OptimizationResult data={dynamicOptimizationResult} />
+
+        {/* Bottom Corridor Telemetry & Resources Section */}
+        {availableBlocks && resourceAvailability && trafficForecast && (
+          <div className="space-y-2.5 pt-1">
+            <DashboardSectionHeader
+              title="Corridor Telemetry & Resource Availability"
+              description="Real-time train traffic forecast, available possession block windows, and maintenance crew deployment readiness."
+              titleSize="sm"
+              spacing="compact"
+            />
+
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-[1.2fr_0.9fr_1.5fr]">
+              <TrafficForecastChart
+                data={trafficForecast}
+                corridorCode={corridorCode}
+                dateFormatted={trafficForecast.dateFormatted}
+              />
+
+              <AvailableBlocks
+                blocks={availableBlocks}
+                dateFormatted={trafficForecast.dateFormatted}
+                activeBlockTime={activeBlock.timeRangeFormatted}
+                onSelectBlock={handleSelectBlockWindow}
+              />
+
+              <ResourceAvailability
+                resources={resourceAvailability}
+                dateFormatted={trafficForecast.dateFormatted}
+              />
+            </div>
+          </div>
+        )}
       </div>
-    </>
+    </TooltipProvider>
   );
 }

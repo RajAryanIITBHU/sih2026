@@ -1,10 +1,8 @@
 import {
-  AvailableBlocks,
   InteractivePlanner,
   PlannerHeader,
-  ResourceAvailability,
-  TrafficForecastChart,
 } from "@/components/ai-planner";
+import { Separator } from "@/components/ui/separator";
 import { getAIPlannerData } from "@/lib/data/ai-planner";
 
 export const dynamic = "force-dynamic";
@@ -21,16 +19,18 @@ export default async function AIBlockPlannerPage({
   const data = await getAIPlannerData(corridorParam);
 
   return (
-    <main className="min-h-screen bg-muted/30 p-4 md:p-6">
-      <div className="mx-auto max-w-[1600px] space-y-3">
-        {/* Page Header */}
+    <main className="min-h-screen bg-muted/30 p-3 sm:p-5 lg:p-6">
+      <div className="mx-auto max-w-[1600px] space-y-4">
+        {/* Operations Header with Corridor Selector, Date Context, View Toggle & Actions */}
         <PlannerHeader
           corridors={data.corridors}
           selectedCorridorCode={data.selectedCorridor?.code || "C-01"}
           selectedDate={data.recommendedBlock.dateFormatted}
         />
 
-        {/* Interactive Main Planner: Dynamic Coordination Between Selected Tasks, Schedule Timeline & Metrics */}
+        <Separator className="opacity-60" />
+
+        {/* Coordinated Interactive Multi-Agent AI Planner with Timeline, Telemetry & Resource Readiness */}
         <InteractivePlanner
           initialTasks={data.tasks}
           initialScheduleTasks={data.scheduleTasks}
@@ -38,26 +38,10 @@ export default async function AIBlockPlannerPage({
           initialOptimizationResult={data.optimizationResult}
           recommendedBlock={data.recommendedBlock}
           corridorCode={data.selectedCorridor?.code || "C-01"}
+          availableBlocks={data.availableBlocks}
+          resourceAvailability={data.resourceAvailability}
+          trafficForecast={data.trafficForecast}
         />
-
-        {/* Bottom Information */}
-        <div className="grid grid-cols-1 gap-3 lg:grid-cols-[1.2fr_0.9fr_1.5fr]">
-          <TrafficForecastChart
-            data={data.trafficForecast}
-            corridorCode={data.selectedCorridor?.code || "C-01"}
-            dateFormatted={data.trafficForecast.dateFormatted}
-          />
-
-          <AvailableBlocks
-            blocks={data.availableBlocks}
-            dateFormatted={data.trafficForecast.dateFormatted}
-          />
-
-          <ResourceAvailability
-            resources={data.resourceAvailability}
-            dateFormatted={data.trafficForecast.dateFormatted}
-          />
-        </div>
       </div>
     </main>
   );

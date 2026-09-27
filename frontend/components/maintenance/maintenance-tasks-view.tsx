@@ -180,7 +180,7 @@ function FilterSelect({
 }) {
   return (
     <Select
-      value={value}
+      value={value || null}
       onValueChange={(v) => onValueChange(v ?? "")}
     >
       <SelectTrigger className="h-9 w-[108px] text-xs">

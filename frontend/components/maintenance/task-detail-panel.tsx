@@ -280,23 +280,23 @@ export function TaskDetailPanel({
 
       {/* Tabs */}
       <div className="px-3">
-        <Tabs defaultValue={0}>
+        <Tabs defaultValue="overview">
           <TabsList variant="line" className="w-full justify-start">
-            <TabsTrigger value={0} className="text-[10px]">
+            <TabsTrigger value="overview" className="text-[10px]">
               Overview
             </TabsTrigger>
-            <TabsTrigger value={1} className="text-[10px]">
+            <TabsTrigger value="ai-analysis" className="text-[10px]">
               AI Analysis
             </TabsTrigger>
-            <TabsTrigger value={2} className="text-[10px]">
+            <TabsTrigger value="history" className="text-[10px]">
               History
             </TabsTrigger>
-            <TabsTrigger value={3} className="text-[10px]">
+            <TabsTrigger value="related" className="text-[10px]">
               Related Tasks
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value={0}>
+          <TabsContent value="overview">
             <div className="flex-1 space-y-3 overflow-y-auto py-3">
               <AssetInformation task={task} />
               <MaintenanceDetails task={task} />
@@ -308,19 +308,19 @@ export function TaskDetailPanel({
             </div>
           </TabsContent>
 
-          <TabsContent value={1}>
+          <TabsContent value="ai-analysis">
             <div className="py-6 text-center text-xs text-muted-foreground">
               AI analysis details will appear here.
             </div>
           </TabsContent>
 
-          <TabsContent value={2}>
+          <TabsContent value="history">
             <div className="py-6 text-center text-xs text-muted-foreground">
               Maintenance history will appear here.
             </div>
           </TabsContent>
 
-          <TabsContent value={3}>
+          <TabsContent value="related">
             <div className="py-6 text-center text-xs text-muted-foreground">
               Related tasks will appear here.
             </div>

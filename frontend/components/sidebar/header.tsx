@@ -8,10 +8,12 @@ import { SidebarTrigger } from "../ui/sidebar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { CreateRequestDialog } from "./create-request-dialog";
 
 const SidebarHeaderData = () => {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -192,6 +194,8 @@ const SidebarHeaderData = () => {
 
         {/* Add New */}
         <Button
+          type="button"
+          onClick={() => setIsCreateOpen(true)}
           variant="outline"
           className="
             h-9
@@ -212,6 +216,12 @@ const SidebarHeaderData = () => {
           <PlusIcon className="size-3.5" />
           <span className="hidden sm:inline">Add new</span>
         </Button>
+
+        {/* Add New Modal Dialog */}
+        <CreateRequestDialog
+          open={isCreateOpen}
+          onOpenChange={setIsCreateOpen}
+        />
       </div>
     </header>
   );

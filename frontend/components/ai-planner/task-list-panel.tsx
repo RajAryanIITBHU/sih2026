@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 import { mapDepartmentToRow, type PlannerTaskView, type TaskPriority } from "./types";
 
 export const priorityClasses: Record<TaskPriority, string> = {
@@ -31,7 +31,7 @@ export function PriorityBadge({ priority }: { priority: TaskPriority }) {
   return (
     <Badge
       variant="outline"
-      className={`rounded-md px-2 py-0.5 text-[9px] ${priorityClasses[priority]}`}
+      className={`rounded-md px-2 py-0.5 text-[10px] font-semibold ${priorityClasses[priority]}`}
     >
       {priority}
     </Badge>
@@ -45,25 +45,38 @@ export interface TaskListItemProps {
 
 export function TaskListItem({ task, onToggleSelect }: TaskListItemProps) {
   return (
-    <div className="flex items-start gap-2 py-2.5">
+    <div
+      onClick={() => onToggleSelect?.(task.id)}
+      className={cn(
+        "group flex cursor-pointer items-start gap-2.5 rounded-lg border border-transparent p-2.5 transition-all hover:bg-muted/60 hover:border-border/50",
+        task.selected && "bg-primary/[0.04] border-primary/20"
+      )}
+    >
       <Checkbox
         checked={task.selected}
         onCheckedChange={() => onToggleSelect?.(task.id)}
-        className="mt-0.5 size-3.5"
+        onClick={(e) => e.stopPropagation()}
+        className="mt-0.5 size-4"
       />
 
       <div className="min-w-0 flex-1">
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-[10px] font-semibold">{task.id}</p>
+        <div className="flex items-center justify-between gap-1.5">
+          <p className="text-xs font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+            {task.id}
+          </p>
 
           <PriorityBadge priority={task.priority} />
         </div>
 
-        <p className="mt-0.5 text-[10px] font-medium">{task.title}</p>
-
-        <p className="mt-0.5 text-[9px] text-muted-foreground">
-          {task.department} · {task.duration}
+        <p className="mt-1 text-xs font-medium leading-snug text-foreground/90 line-clamp-2">
+          {task.title}
         </p>
+
+        <div className="mt-1.5 flex items-center gap-2 text-[10px] text-muted-foreground">
+          <span className="font-semibold text-foreground/80">{task.department}</span>
+          <span>•</span>
+          <span>{task.duration}</span>
+        </div>
       </div>
     </div>
   );
@@ -165,14 +178,29 @@ export function TaskListPanel({
     setPriorityFilter("all");
   };
 
+  const departmentTabs = [
+    { id: "all", label: "All Tasks" },
+    { id: "engineering", label: "Track" },
+    { id: "electrical", label: "OHE" },
+    { id: "snt", label: "S&T" },
+  ];
+
   return (
-    <Card className="flex h-[480px] max-h-[480px] flex-col rounded-xl border shadow-none overflow-hidden">
-      <CardHeader className="shrink-0 space-y-3 p-3 pb-2">
+    <Card className="flex h-[490px] max-h-[490px] flex-col rounded-xl border shadow-none overflow-hidden bg-card">
+      <CardHeader className="shrink-0 space-y-2.5 p-3.5 pb-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <CardTitle className="text-xs">Maintenance Tasks</CardTitle>
+            <CardTitle className="text-sm font-bold tracking-tight">Maintenance Tasks</CardTitle>
 
-            <Badge variant="secondary" className="text-[8px] font-normal">
+            <Badge
+              variant="outline"
+              className={cn(
+                "border-transparent text-[9px] font-semibold px-2 py-0.5",
+                selectedCount > 0
+                  ? "bg-primary/10 text-primary"
+                  : "bg-muted text-muted-foreground"
+              )}
+            >
               {selectedCount} selected
             </Badge>
           </div>
@@ -182,7 +210,7 @@ export function TaskListPanel({
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-5 px-1.5 text-[8px] text-muted-foreground hover:text-foreground"
+                className="h-5 px-1.5 text-[9px] font-semibold text-emerald-600 hover:text-emerald-700"
                 onClick={handleResetFilters}
               >
                 Reset
@@ -201,14 +229,33 @@ export function TaskListPanel({
           </div>
         </div>
 
+        {/* Quick Department Filter Chips */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5">
+          {departmentTabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setDepartmentFilter(tab.id)}
+              className={cn(
+                "rounded-md px-2.5 py-1 text-[10px] font-medium transition-colors",
+                departmentFilter === tab.id
+                  ? "bg-primary text-primary-foreground font-semibold shadow-xs"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+              )}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Search bar with Filter Menu */}
         <div className="relative">
-          <Search className="absolute left-2.5 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground" />
 
           <Input
-            placeholder="Search maintenance tasks..."
+            placeholder="Search tasks, defects, assets..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="h-8 pl-7 pr-7 text-[10px]"
+            className="h-8 pl-8 pr-8 text-xs"
           />
 
           <DropdownMenu>
@@ -223,45 +270,11 @@ export function TaskListPanel({
                   )}
                   aria-label="Filter tasks"
                 >
-                  <Filter className="size-3" />
+                  <Filter className="size-3.5" />
                 </Button>
               }
             />
             <DropdownMenuContent align="end" className="w-52 text-xs">
-              <DropdownMenuLabel className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                Department
-              </DropdownMenuLabel>
-              <DropdownMenuItem
-                className="flex items-center justify-between text-xs cursor-pointer"
-                onClick={() => setDepartmentFilter("all")}
-              >
-                <span>All Departments</span>
-                {departmentFilter === "all" && <Check className="size-3.5 text-primary" />}
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="flex items-center justify-between text-xs cursor-pointer"
-                onClick={() => setDepartmentFilter("engineering")}
-              >
-                <span>Engineering (Track & Civil)</span>
-                {departmentFilter === "engineering" && <Check className="size-3.5 text-primary" />}
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="flex items-center justify-between text-xs cursor-pointer"
-                onClick={() => setDepartmentFilter("electrical")}
-              >
-                <span>Electrical (OHE & Power)</span>
-                {departmentFilter === "electrical" && <Check className="size-3.5 text-primary" />}
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="flex items-center justify-between text-xs cursor-pointer"
-                onClick={() => setDepartmentFilter("snt")}
-              >
-                <span>S&T (Signaling & Telecom)</span>
-                {departmentFilter === "snt" && <Check className="size-3.5 text-primary" />}
-              </DropdownMenuItem>
-
-              <DropdownMenuSeparator />
-
               <DropdownMenuLabel className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                 Priority
               </DropdownMenuLabel>
@@ -282,7 +295,7 @@ export function TaskListPanel({
                 className="text-xs cursor-pointer text-primary font-medium"
                 onClick={() => handleBulkSelect(true)}
               >
-                Select All Shown
+                Select All Shown ({filteredTasks.length})
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="text-xs cursor-pointer text-muted-foreground"
@@ -307,8 +320,8 @@ export function TaskListPanel({
         </div>
       </CardHeader>
 
-      <CardContent className="flex-1 min-h-0 overflow-y-auto px-3 pb-2">
-        <div className="divide-y">
+      <CardContent className="flex-1 min-h-0 overflow-y-auto px-2.5 pb-2">
+        <div className="space-y-1.5">
           {filteredTasks.length > 0 ? (
             filteredTasks.map((task, index) => (
               <TaskListItem
@@ -318,15 +331,15 @@ export function TaskListPanel({
               />
             ))
           ) : (
-            <div className="py-6 text-center space-y-1.5">
-              <p className="text-[10px] text-muted-foreground">
+            <div className="py-12 text-center space-y-2">
+              <p className="text-xs text-muted-foreground">
                 No matching tasks found.
               </p>
               {hasActiveFilters && (
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-6 text-[9px]"
+                  className="h-7 text-xs"
                   onClick={handleResetFilters}
                 >
                   Reset Filters
